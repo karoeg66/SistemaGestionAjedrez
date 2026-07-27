@@ -18,4 +18,47 @@ public class ListaDoble {
         }
         tamanio++;
     }
+
+    public Partida eliminarPartida(int id) {
+        if (isEmpty()) {
+            return null;
+        }
+        NodoListaDoble puntero = cabeza;
+        while (puntero != null) {
+            if (puntero.partida.id == id) {
+                Partida aux = puntero.partida;
+
+
+                if (puntero == cabeza) {
+                    cabeza = puntero.siguiente;
+                    if (cabeza != null) {
+                        cabeza.anterior = null;
+                    } else {
+                        ultimo = null;
+                    }
+                }
+
+                else if (puntero == ultimo) {
+                    ultimo = puntero.anterior;
+                    ultimo.siguiente = null;
+                }
+
+                else {
+                    puntero.anterior.siguiente = puntero.siguiente;
+                    puntero.siguiente.anterior = puntero.anterior;
+                }
+
+                tamanio--;
+                return aux;
+            }
+
+            puntero = puntero.siguiente;
+        }
+
+        return null;
+    }
+
+    public boolean isEmpty() {
+        return cabeza == null;
+    }
 }
