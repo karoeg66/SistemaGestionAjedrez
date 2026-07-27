@@ -1,16 +1,13 @@
 package org.karo.eg66;
 
 public class NodoListaDoble {
-    private Partida partida;
-    private NodoListaDoble siguiente;
-    private NodoListaDoble anterior;
-    private int tamanio;
+    Partida partida;
+    NodoListaDoble siguiente;
+    NodoListaDoble anterior;
 
-    public NodoListaDoble(){
+    public NodoListaDoble(Partida partida) {
+        this.partida = partida;
         this.siguiente = null;
         this.anterior = null;
-        this.tamanio = 0;
     }
-
-    public void añadirFinal ()
 }
