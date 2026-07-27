@@ -17,8 +17,11 @@ public class PantallaPartida {
     GestionPartida gestionPartida;
     int puntajeJugador1;
     int puntajeJugador2;
+    Partida partida;
 
-    public PantallaPartida() {
+    public PantallaPartida(Jugador jugador1, Jugador jugador2) {
+        partida = new Partida(jugador1, jugador2);
+        this.gestionPartida = new GestionPartida(partida);
         btnAceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -38,6 +41,7 @@ public class PantallaPartida {
                 obtenerResultado(cboxResultado.getSelectedItem().toString());
                 obtenerPuntosJugador1(puntajeJugador1);
                 obtenerPuntosJugador2(puntajeJugador2);
+                gestionPartida.otorgarPuntos();
             }
         });
     }
