@@ -22,7 +22,7 @@ public class PantallaPartida {
         btnAceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-   
+
                 String textoPuntos1 = txtPuntosJugador1.getText().trim();
                 String textoPuntos2 = txtPuntosJugador2.getText().trim();
 
