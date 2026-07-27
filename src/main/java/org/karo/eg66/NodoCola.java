@@ -1,6 +1,5 @@
 package org.karo.eg66;
 
-import javax.print.attribute.standard.JobOriginatingUserName;
 
 public class NodoCola {
     private Jugador jugador;
