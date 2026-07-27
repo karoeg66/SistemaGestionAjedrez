@@ -13,13 +13,13 @@ public class GestionPartida {
         if (resultadoJugador1 == Resultado.VICTORIA) {
             partida.jugador1.setPuntaje(partida.jugador1.getPuntaje() + 20);
         }
-        else {
+        else if (resultadoJugador1 == Resultado.DERROTA) {
             partida.jugador1.setPuntaje(partida.jugador1.getPuntaje() - 10);
         }
         if (resultadoJugador2 == Resultado.VICTORIA) {
             partida.jugador2.setPuntaje(partida.jugador2.getPuntaje() + 20);
         }
-        else {
+        else  if (resultadoJugador2 == Resultado.DERROTA) {
             partida.jugador2.setPuntaje(partida.jugador2.getPuntaje() - 10);
         }
 
