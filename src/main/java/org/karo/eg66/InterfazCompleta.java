@@ -18,7 +18,7 @@ public class InterfazCompleta {
     private JButton btnSalir;
     private JPanel panelInterfazCompleta;
     InterfazPrincipal interfazPrincipal;
-    PantallaPartida pantallaPartida;
+
 
     public InterfazCompleta(TorneoEstructuras torneo) {
         btnInscribir.addActionListener(new ActionListener() {
@@ -37,19 +37,27 @@ public class InterfazCompleta {
         btnIngresarResultado.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String idPartida= JOptionPane.showInputDialog(null, "Ingrese resultado", "Resultado", JOptionPane.QUESTION_MESSAGE);
+                if (torneo.lista.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "No hay partidas creadas, Forme una partida");
+                    return;
+                }
+                try {
+                    String idPartida = JOptionPane.showInputDialog(null, "Ingrese resultado", "Resultado", JOptionPane.QUESTION_MESSAGE);
+                    if (!comprobarCampo(idPartida)) {
+                        JOptionPane.showMessageDialog(null, "Resultado no valido", "Resultado", JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+                    if (!torneo.lista.buscarPartida(Integer.parseInt(idPartida))) {
+                        JOptionPane.showMessageDialog(null, "Partida no encontrada", "Resultado", JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+                    Partida partida = torneo.lista.obtenerPartida(Integer.parseInt(idPartida));
+                    PantallaPartida pantallaPartida = new PantallaPartida(partida, torneo, interfazPrincipal);
+                    interfazPrincipal.mostrarPantallaPartida(pantallaPartida);
 
-                if (!comprobarCampo(idPartida)) {
-                    JOptionPane.showMessageDialog(null, "Resultado no valido", "Resultado", JOptionPane.WARNING_MESSAGE);
-                    return;
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Debe ingresar un numero", "Formato invalido", JOptionPane.WARNING_MESSAGE);
                 }
-                if (!torneo.lista.buscarPartida(Integer.parseInt(idPartida))){
-                    JOptionPane.showMessageDialog(null, "Partida no encontrada", "Resultado", JOptionPane.WARNING_MESSAGE);
-                    return;
-                }
-                Partida partida = torneo.lista.obtenerPartida(Integer.parseInt(idPartida));
-                PantallaPartida pantallaPartida = new PantallaPartida(partida,torneo,interfazPrincipal);
-                interfazPrincipal.mostrarPantallaPartida(pantallaPartida);
             }
         });
         btnFormarPartida.addActionListener(new ActionListener() {
@@ -59,8 +67,19 @@ public class InterfazCompleta {
                 Partida partida = new Partida(torneo.cola.dequeue(),torneo.cola.dequeue());
                     torneo.lista.añadirAlFinal(partida);
                 } catch (Exception ex) {
-                    throw new RuntimeException(ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Resultado", JOptionPane.WARNING_MESSAGE);
                 }
+            }
+        });
+        btnHistorialDePartidas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(torneo.lista.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "No hay partidas creadas", "Partidas", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                JOptionPane.showMessageDialog(null, torneo.lista.mostrarPartidas());
+
             }
         });
     }

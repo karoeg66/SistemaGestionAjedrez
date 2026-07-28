@@ -1,5 +1,7 @@
 package org.karo.eg66;
 
+import javax.swing.*;
+
 public class ListaDoble {
     NodoListaDoble cabeza;
     NodoListaDoble ultimo;
@@ -25,7 +27,7 @@ public class ListaDoble {
         }
         NodoListaDoble puntero = cabeza;
         while (puntero != null) {
-            if (puntero.partida.id == id) {
+            if (puntero.partida.getId() == id) {
                 Partida aux = puntero.partida;
 
 
@@ -68,7 +70,7 @@ public class ListaDoble {
         }
         NodoListaDoble puntero = cabeza;
         while (puntero != null) {
-            if (puntero.partida.id == id) {
+            if (puntero.partida.getId() == id) {
                 return true;
             }
             puntero = puntero.siguiente;
@@ -82,11 +84,24 @@ public class ListaDoble {
         }
         NodoListaDoble puntero = cabeza;
         while (puntero != null) {
-            if (puntero.partida.id == id) {
+            if (puntero.partida.getId() == id) {
                 return puntero.partida;
             }
             puntero = puntero.siguiente;
         }
         return null;
     }
-}
+
+    public String mostrarPartidas() {
+        if (isEmpty()) {
+            return "La lista esta vacia";
+        }
+        NodoListaDoble puntero = cabeza;
+        String text = "";
+        while (puntero != null) {
+            text += puntero.partida.toString() ;
+            puntero = puntero.siguiente;
+            }
+        return text;
+        }
+    }

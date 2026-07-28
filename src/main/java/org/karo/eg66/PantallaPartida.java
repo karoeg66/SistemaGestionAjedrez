@@ -25,14 +25,15 @@ public class PantallaPartida {
 
     public PantallaPartida(Partida partida, TorneoEstructuras torneo, InterfazPrincipal interfazPrincipal) {
         this.gestionPartida = new GestionPartida(partida);
-        lblJugador1.setText(partida.jugador1.getNombre());
-        lblJugador2.setText(partida.jugador2.getNombre());
+
+        lblNombreJugador1.setText("Jugador 1: " + partida.getJugador1().getNombre());
+        lblNombreJugador2.setText("Jugador 2: " + partida.getJugador2().getNombre());
+
+        lblJugador1.setText(partida.getJugador1().getNombre());
+        lblJugador2.setText(partida.getJugador2().getNombre());
         btnAceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                lblNombreJugador1.setText("Jugador 1: " + partida.jugador1.getNombre());
-                lblNombreJugador2.setText("Jugador 2: " + partida.jugador2.getNombre());
 
                 String textoPuntos1 = txtPuntosJugador1.getText().trim();
                 String textoPuntos2 = txtPuntosJugador2.getText().trim();
@@ -81,11 +82,11 @@ public class PantallaPartida {
     }
 
     public void obtenerPuntosJugador1(int puntaje) {
-        gestionPartida.partida.jugador1.setPuntaje(gestionPartida.partida.jugador1.getPuntaje() + puntaje);
+        gestionPartida.partida.getJugador1().setPuntaje(gestionPartida.partida.getJugador1().getPuntaje() + puntaje);
     }
 
     public void obtenerPuntosJugador2(int puntaje) {
-        gestionPartida.partida.jugador2.setPuntaje(gestionPartida.partida.jugador2.getPuntaje() + puntaje);
+        gestionPartida.partida.getJugador2().setPuntaje(gestionPartida.partida.getJugador2().getPuntaje() + puntaje);
     }
 
     public JPanel getPanelPantallaPartida() {
