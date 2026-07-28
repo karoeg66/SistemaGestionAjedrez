@@ -11,10 +11,10 @@ public class Inscripcion {
     private JLabel lblCedula;
     private JButton btnRegistrar;
     Jugador jugador;
-    Cola cola;
+    Torneo torneo;
 
-    public Inscripcion(Cola cola) {
-        this.cola = cola;
+    public Inscripcion(Torneo torneo) {
+        this.torneo = torneo;
 
         btnRegistrar.addActionListener(new ActionListener() {
             @Override
@@ -36,7 +36,7 @@ public class Inscripcion {
 
 
                 jugador = new Jugador(nombre, cedula);
-                cola.enqueue(jugador);
+                torneo.cola.enqueue(jugador);
 
                 JOptionPane.showMessageDialog(null, "Jugador inscrito con exito en la cola");
                 txtNombre.setText("");
