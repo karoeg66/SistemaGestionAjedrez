@@ -37,6 +37,10 @@ public class InterfazCompleta {
         btnIngresarResultado.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (torneo.lista.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "No hay partidas creadas, Forme una partida");
+                    return;
+                }
                 String idPartida= JOptionPane.showInputDialog(null, "Ingrese resultado", "Resultado", JOptionPane.QUESTION_MESSAGE);
 
                 if (!comprobarCampo(idPartida)) {
@@ -59,8 +63,19 @@ public class InterfazCompleta {
                 Partida partida = new Partida(torneo.cola.dequeue(),torneo.cola.dequeue());
                     torneo.lista.añadirAlFinal(partida);
                 } catch (Exception ex) {
-                    throw new RuntimeException(ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Resultado", JOptionPane.WARNING_MESSAGE);
                 }
+            }
+        });
+        btnHistorialDePartidas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(torneo.lista.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "No hay partidas creadas, Resultado");
+                    return;
+                }
+
+
             }
         });
     }

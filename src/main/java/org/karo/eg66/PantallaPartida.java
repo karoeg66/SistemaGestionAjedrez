@@ -25,14 +25,15 @@ public class PantallaPartida {
 
     public PantallaPartida(Partida partida, TorneoEstructuras torneo, InterfazPrincipal interfazPrincipal) {
         this.gestionPartida = new GestionPartida(partida);
+
+        lblNombreJugador1.setText("Jugador 1: " + partida.jugador1.getNombre());
+        lblNombreJugador2.setText("Jugador 2: " + partida.jugador2.getNombre());
+
         lblJugador1.setText(partida.jugador1.getNombre());
         lblJugador2.setText(partida.jugador2.getNombre());
         btnAceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                lblNombreJugador1.setText("Jugador 1: " + partida.jugador1.getNombre());
-                lblNombreJugador2.setText("Jugador 2: " + partida.jugador2.getNombre());
 
                 String textoPuntos1 = txtPuntosJugador1.getText().trim();
                 String textoPuntos2 = txtPuntosJugador2.getText().trim();
