@@ -6,6 +6,4 @@ public class Torneo {
     BST arbol  = new BST();
 
 
-
-
 }

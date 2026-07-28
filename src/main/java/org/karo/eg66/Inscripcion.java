@@ -27,12 +27,16 @@ public class Inscripcion {
 
                 if (!comprobarCampo(nombre) || !comprobarCampo(cedula)) {
                     JOptionPane.showMessageDialog(null, "Error: Todos los campos son obligatorios.", "Campos vacíos", JOptionPane.WARNING_MESSAGE);
+                    txtNombre.setText("");
+                    txtCedula.setText("");
                     return;
                 }
 
 
                 if (!comprobarCedulaNumerica(cedula)) {
                     JOptionPane.showMessageDialog(null, "Error: La cedula debe contener unicamente numeros.", "Error de formato", JOptionPane.ERROR_MESSAGE);
+                    txtNombre.setText("");
+                    txtCedula.setText("");
                     return;
                 }
 
