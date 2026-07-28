@@ -16,9 +16,11 @@
           <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-11206656"/>
           <font name="Segoe UI Black" size="28" style="1"/>
-          <foreground color="-5103070"/>
+          <foreground color="-5087377"/>
           <text value="Sistema de gestion de Torneo de ajedrez"/>
+          <toolTipText value="Ej: 123"/>
         </properties>
       </component>
       <vspacer id="cc60a">
@@ -33,7 +35,10 @@
           </grid>
         </constraints>
         <properties>
+          <background color="-5087377"/>
+          <foreground color="-658751"/>
           <horizontalAlignment value="0"/>
+          <toolTipText value=""/>
         </properties>
       </component>
       <component id="69fd5" class="javax.swing.JButton" binding="btnAceptar">
@@ -41,17 +46,21 @@
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-5087377"/>
           <font name="Century Gothic" size="14" style="0"/>
+          <foreground color="-658751"/>
           <text value="Ingresar"/>
         </properties>
       </component>
       <component id="d5b1b" class="javax.swing.JLabel" binding="lblContraseña">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="3" use-parent-layout="false">
+            <preferred-size width="300" height="20"/>
+          </grid>
         </constraints>
         <properties>
           <font name="Segoe UI Black" size="22" style="0"/>
-          <foreground color="-5103070"/>
+          <foreground color="-5087377"/>
           <horizontalAlignment value="0"/>
           <horizontalTextPosition value="0"/>
           <text value="Contraseña de acceso:"/>
