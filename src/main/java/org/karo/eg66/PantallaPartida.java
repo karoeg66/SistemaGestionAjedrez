@@ -70,12 +70,18 @@ public class PantallaPartida {
 
     public void obtenerResultado(String campo) {
         if (comprobarCampo(campo)) {
+            Jugador jugador1 = gestionPartida.partida.getJugador1();
+            Jugador jugador2 = gestionPartida.partida.getJugador2();
+
             if (campo.equals("JUGADOR 1")) {
                 gestionPartida.resultadoJugador1 = Resultado.VICTORIA;
                 gestionPartida.resultadoJugador2 = Resultado.DERROTA;
+                jugador2.setDerrotas(jugador2.getDerrotas() + 1);
+
             } else if (campo.equals("JUGADOR 2")) {
                 gestionPartida.resultadoJugador2 = Resultado.VICTORIA;
                 gestionPartida.resultadoJugador1 = Resultado.DERROTA;
+                jugador2.setDerrotas((jugador1.getDerrotas() + 1));
             } else if (campo.equals("EMPATE")) {
                 gestionPartida.resultadoJugador1 = Resultado.EMPATE;
                 gestionPartida.resultadoJugador2 = Resultado.EMPATE;
