@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         JFrame frame = new JFrame();
         TorneoEstructuras torneo = new TorneoEstructuras();
-        InterfazInicial interfaz1 = new InterfazInicial();
+        InterfazInicial interfaz1 = new InterfazInicial(torneo);
         Inscripcion inscripcion = new Inscripcion(torneo);
         InicioSesion pantallaPrincipalInicio = new InicioSesion();
         InterfazCompleta interfazCompleta = new InterfazCompleta(torneo);

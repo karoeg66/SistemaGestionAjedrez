@@ -23,7 +23,7 @@ public class Partida {
     }
 
     public String toString() {
-        return "ID: " + id + "\n Fecha: " + fecha.format(formateador) + "\n Jugador1: " + jugador1.toString() + "\nJugador2: " + jugador2.toString() + "\nResultado :"+ resultado + "\n ---------------------------------------------------" + "\n" ;
+        return "ID: " + id + "\n Fecha: " + fecha.format(formateador) + "\n Jugador1: " + jugador1.toString() + "\nJugador2: " + jugador2.toString() + "\nResultado :"+ resultado + "\n --------------------------------------" + "\n" ;
     }
 
     public int getId() {

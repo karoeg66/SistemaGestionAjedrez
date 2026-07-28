@@ -78,4 +78,60 @@ public class Cola {
         return texto;
     }
 
+    public boolean buscar(int id){
+        if (isEmpty()){
+            return false;
+        }
+        NodoCola puntero = cabeza;
+        while(puntero != null){
+            if (Integer.parseInt(puntero.getJugador().getId()) == id){
+                return true;
+            }
+            puntero = puntero.getSiguiente();
+        }
+        return false;
+    }
+
+    public Jugador eliminarJugador(int id) {
+        if (isEmpty()) {
+            return null;
+        }
+
+
+        if (Integer.parseInt(cabeza.getJugador().getId()) == id) {
+            Jugador eliminado = cabeza.getJugador();
+            cabeza = cabeza.getSiguiente();
+
+
+            if (cabeza == null) {
+                cola = null;
+            }
+
+            tamanio--;
+            return eliminado;
+        }
+
+
+        NodoCola puntero = cabeza;
+
+        while (puntero.getSiguiente() != null) {
+
+            if (Integer.parseInt(puntero.getSiguiente().getJugador().getId()) == id) {
+                Jugador eliminado = puntero.getJugador();
+
+                puntero.setSiguiente(puntero.getSiguiente().getSiguiente());
+
+                if (puntero.getSiguiente() == null) {
+                    cola = puntero;
+                }
+
+                tamanio--;
+                return eliminado;
+            }
+
+            puntero = puntero.getSiguiente();
+        }
+
+        return null;
+    }
 }
