@@ -1,5 +1,7 @@
 package org.karo.eg66;
 
+import javax.swing.*;
+
 public class ListaDoble {
     NodoListaDoble cabeza;
     NodoListaDoble ultimo;
@@ -89,4 +91,18 @@ public class ListaDoble {
         }
         return null;
     }
-}
+
+    public String mostrarPartidas() {
+        if (isEmpty()) {
+            return "La lista esta vacia";
+        }
+        NodoListaDoble puntero = cabeza;
+        String text = "";
+        while (puntero != null) {
+            text += puntero.partida.toString() ;
+            text += "\n";
+            puntero = puntero.siguiente;
+            }
+        return text;
+        }
+    }
