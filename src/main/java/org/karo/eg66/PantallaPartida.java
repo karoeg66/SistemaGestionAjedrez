@@ -1,6 +1,7 @@
 package org.karo.eg66;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,17 +15,25 @@ public class PantallaPartida {
     private JLabel lblJugador2;
     private JLabel lblGanador;
     private JButton btnAceptar;
+    private JPanel panelPantallaPartida;
+    private JLabel lblNombreJugador1;
+    private JLabel lblNombreJugador2;
     GestionPartida gestionPartida;
     int puntajeJugador1;
     int puntajeJugador2;
-    Partida partida;
+    Torneo torneo;
+    InterfazPrincipal interfazPrincipal;
 
-    public PantallaPartida(Jugador jugador1, Jugador jugador2) {
-        partida = new Partida(jugador1, jugador2);
+    public PantallaPartida(Partida partida, Torneo torneo,InterfazPrincipal interfazPrincipal) {
         this.gestionPartida = new GestionPartida(partida);
+        lblJugador1.setText(partida.jugador1.getNombre());
+        lblJugador2.setText(partida.jugador2.getNombre());
         btnAceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                lblNombreJugador1.setText("Jugador 1: " + partida.jugador1.getNombre());
+                lblNombreJugador2.setText("Jugador 2: " + partida.jugador2.getNombre());
 
                 String textoPuntos1 = txtPuntosJugador1.getText().trim();
                 String textoPuntos2 = txtPuntosJugador2.getText().trim();
@@ -78,5 +87,13 @@ public class PantallaPartida {
 
     public void obtenerPuntosJugador2(int puntaje) {
         gestionPartida.partida.jugador2.setPuntaje(gestionPartida.partida.jugador2.getPuntaje() + puntaje);
+    }
+
+    public JPanel getPanelPantallaPartida() {
+        return  panelPantallaPartida;
+    }
+
+    public void setInterfazPrincipal(InterfazPrincipal interfazPrincipal) {
+        this.interfazPrincipal = interfazPrincipal;
     }
 }

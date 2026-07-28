@@ -18,6 +18,7 @@ public class InterfazCompleta {
     private JButton btnSalir;
     private JPanel panelInterfazCompleta;
     InterfazPrincipal interfazPrincipal;
+    PantallaPartida pantallaPartida;
 
     public InterfazCompleta(Torneo torneo) {
         btnInscribir.addActionListener(new ActionListener() {
@@ -46,9 +47,9 @@ public class InterfazCompleta {
                     JOptionPane.showMessageDialog(null, "Partida no encontrada", "Resultado", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
-                PantallaPartida pantallaPartida  = new PantallaPartida()
-
-
+                Partida partida = torneo.lista.obtenerPartida(Integer.parseInt(idPartida));
+                PantallaPartida pantallaPartida = new PantallaPartida(partida,torneo,interfazPrincipal);
+                interfazPrincipal.mostrarPantallaPartida(pantallaPartida);
             }
         });
         btnFormarPartida.addActionListener(new ActionListener() {
@@ -75,4 +76,5 @@ public class InterfazCompleta {
     public boolean comprobarCampo(String campo) {
         return campo != null && !campo.trim().isEmpty();
     }
+
 }
