@@ -20,7 +20,7 @@ public class InterfazCompleta {
     InterfazPrincipal interfazPrincipal;
     PantallaPartida pantallaPartida;
 
-    public InterfazCompleta(Torneo torneo) {
+    public InterfazCompleta(TorneoEstructuras torneo) {
         btnInscribir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
