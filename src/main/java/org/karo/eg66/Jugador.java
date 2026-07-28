@@ -4,7 +4,6 @@ public class Jugador {
     private String nombre;
     private String id;
     private int puntaje;
-    private int jugadasDestacadas;
 
     public Jugador(String nombre, String id){
         this.nombre = nombre;
@@ -12,7 +11,6 @@ public class Jugador {
             this.id = id;
         }
         this.puntaje = 0;
-        this.jugadasDestacadas = 0;
     }
 
     public String getNombre() {
@@ -39,11 +37,7 @@ public class Jugador {
         this.puntaje = puntaje;
     }
 
-    public int getJugadasDestacadas() {
-        return jugadasDestacadas;
-    }
-
-    public void setJugadasDestacadas(int jugadasDestacadas) {
-        this.jugadasDestacadas = jugadasDestacadas;
+    public String toString(){
+        return "Nombre: " + this.nombre + ", Id: " + this.id;
     }
 }
