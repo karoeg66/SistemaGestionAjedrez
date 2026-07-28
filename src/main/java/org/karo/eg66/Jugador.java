@@ -38,6 +38,6 @@ public class Jugador {
     }
 
     public String toString(){
-        return "Nombre: " + this.nombre + ", Id: " + this.id + "\n" ;
+        return "Nombre: " + this.nombre + "\n" + "Id: " + this.id + "\n" ;
     }
 }

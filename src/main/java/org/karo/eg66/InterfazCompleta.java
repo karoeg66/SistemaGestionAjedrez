@@ -47,14 +47,14 @@ public class InterfazCompleta {
                         JOptionPane.showMessageDialog(null, "Resultado no valido", "Resultado", JOptionPane.WARNING_MESSAGE);
                         return;
                     }
+                    if (!torneo.lista.buscarPartida(Integer.parseInt(idPartida))) {
+                        JOptionPane.showMessageDialog(null, "Partida no encontrada", "Resultado", JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
                     if (torneo.lista.obtenerPartida(Integer.parseInt(idPartida)).isTerminada()) {
                         JOptionPane.showMessageDialog(null, "La partida ya tiene un resultado registrado", "Resultado", JOptionPane.WARNING_MESSAGE);
                         return;
 
-                    }
-                    if (!torneo.lista.buscarPartida(Integer.parseInt(idPartida))) {
-                        JOptionPane.showMessageDialog(null, "Partida no encontrada", "Resultado", JOptionPane.WARNING_MESSAGE);
-                        return;
                     }
                     Partida partida = torneo.lista.obtenerPartida(Integer.parseInt(idPartida));
                     PantallaPartida pantallaPartida = new PantallaPartida(partida, torneo, interfazPrincipal);
@@ -75,9 +75,13 @@ public class InterfazCompleta {
                 try {
                 Partida partida = new Partida(torneo.cola.dequeue(),torneo.cola.dequeue());
                     torneo.lista.añadirAlFinal(partida);
-                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null,
+                            "Partida # " + partida.getId() + " creada con éxito:\n" +
+                                    partida.getJugador1().getNombre() + " vs " + partida.getJugador2().getNombre(),
+                            "Partida Formada", JOptionPane.INFORMATION_MESSAGE);                } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Resultado", JOptionPane.WARNING_MESSAGE);
                 }
+
             }
         });
         btnHistorialDePartidas.addActionListener(new ActionListener() {
