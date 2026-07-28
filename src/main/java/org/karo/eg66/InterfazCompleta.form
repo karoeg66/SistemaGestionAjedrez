@@ -12,9 +12,10 @@
     <children>
       <component id="49b2" class="javax.swing.JLabel" binding="lblTitle">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Segoe UI Black" size="20" style="1"/>
           <foreground color="-5087377"/>
           <text value="Sistema de gestion de Torneo de ajedrez"/>
         </properties>
@@ -30,6 +31,7 @@
         </constraints>
         <properties>
           <background color="-5087377"/>
+          <font name="Segoe UI" size="14" style="0"/>
           <foreground color="-658213"/>
           <text value="Ingresar resultado partida"/>
         </properties>
@@ -40,6 +42,7 @@
         </constraints>
         <properties>
           <background color="-5087377"/>
+          <font name="Segoe UI" size="14" style="0"/>
           <foreground color="-658213"/>
           <text value="Retirar jugador"/>
         </properties>
@@ -50,6 +53,7 @@
         </constraints>
         <properties>
           <background color="-5087377"/>
+          <font name="Segoe UI" size="14" style="0"/>
           <foreground color="-658213"/>
           <text value="Lista de espera"/>
         </properties>
@@ -60,6 +64,7 @@
         </constraints>
         <properties>
           <background color="-5087377"/>
+          <font name="Segoe UI" size="14" style="0"/>
           <foreground color="-658213"/>
           <text value="Ranking completo"/>
         </properties>
@@ -70,6 +75,7 @@
         </constraints>
         <properties>
           <background color="-5087377"/>
+          <font name="Segoe UI" size="14" style="0"/>
           <foreground color="-658213"/>
           <text value="Historial de partidas"/>
         </properties>
@@ -80,6 +86,7 @@
         </constraints>
         <properties>
           <background color="-5087377"/>
+          <font name="Segoe UI" size="14" style="0"/>
           <foreground color="-658213"/>
           <text value="Anular partida"/>
         </properties>
@@ -90,6 +97,7 @@
         </constraints>
         <properties>
           <background color="-5087377"/>
+          <font name="Segoe UI" size="14" style="0"/>
           <foreground color="-658213"/>
           <text value="Mostrar jugadores segun profundidad"/>
         </properties>
@@ -100,8 +108,9 @@
         </constraints>
         <properties>
           <background color="-5087377"/>
+          <font name="Segoe UI" size="14" style="0"/>
           <foreground color="-658213"/>
-          <text value="InscribirJugador"/>
+          <text value="Inscribir Jugador"/>
         </properties>
       </component>
       <component id="80dc9" class="javax.swing.JButton" binding="btnFormarPartida">
@@ -110,6 +119,7 @@
         </constraints>
         <properties>
           <background color="-5087377"/>
+          <font name="Segoe UI" size="14" style="0"/>
           <foreground color="-658213"/>
           <text value="Formar partida (Por orden de llegada)"/>
         </properties>
@@ -120,6 +130,7 @@
         </constraints>
         <properties>
           <background color="-5087377"/>
+          <font name="Segoe UI" size="15" style="1"/>
           <foreground color="-658213"/>
           <text value="Salir"/>
         </properties>
