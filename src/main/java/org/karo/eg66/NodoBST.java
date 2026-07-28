@@ -1,6 +1,8 @@
 package org.karo.eg66;
 
-public class NodoBST {
+import java.io.Serializable;
+
+public class NodoBST implements Serializable {
     Jugador jugador;
     NodoBST izquierda;
     NodoBST derecha;

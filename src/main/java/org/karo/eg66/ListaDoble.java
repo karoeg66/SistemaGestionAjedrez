@@ -1,8 +1,9 @@
 package org.karo.eg66;
 
 import javax.swing.*;
+import java.io.Serializable;
 
-public class ListaDoble {
+public class ListaDoble implements Serializable {
     NodoListaDoble cabeza;
     NodoListaDoble ultimo;
     int tamanio;

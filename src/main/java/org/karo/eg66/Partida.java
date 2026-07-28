@@ -1,9 +1,10 @@
 package org.karo.eg66;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Partida {
+public class Partida implements Serializable {
     static int contador = 1;
     private int id;
     private LocalDate fecha;
@@ -23,7 +24,7 @@ public class Partida {
     }
 
     public String toString() {
-        return "ID: " + id + "\n Fecha: " + fecha.format(formateador) + "\n Jugador1: " + jugador1.toString() + "\nJugador2: " + jugador2.toString() + "\nResultado :"+ resultado + "\n ---------------------------------------------------" + "\n" ;
+        return "ID: " + id + "\n Fecha: " + fecha.format(formateador) + "\n Jugador1: " + jugador1.toString() + "\nJugador2: " + jugador2.toString() + "\nResultado :"+ resultado + "\n --------------------------------------" + "\n" ;
     }
 
     public int getId() {
