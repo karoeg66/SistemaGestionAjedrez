@@ -42,8 +42,5 @@ public class BST {
         if(id == nodo.jugador.getId()) return true;
         return search(nodo.izquierda, id) || search(nodo.derecha, id);
     }
-//    public NodoBST delete(NodoBST nodo, String id){
-//
-//    }
 
 }
