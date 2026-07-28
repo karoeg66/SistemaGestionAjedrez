@@ -39,10 +39,20 @@ public class BST implements Serializable {
         return nodo;
     }
 
-    public boolean search(NodoBST nodo, String id){
-        if(nodo == null) return false;
-        if(id == nodo.jugador.getId()) return true;
-        return search(nodo.izquierda, id) || search(nodo.derecha, id);
+
+    public boolean search(String id) {
+        return searchRec(this.raiz, id);
+    }
+
+    private boolean searchRec(NodoBST nodo, String id) {
+        if (nodo == null) {
+            return false;
+        }
+        if (nodo.jugador.getId().trim().equalsIgnoreCase(id.trim())) {
+            return true;
+        }
+
+        return searchRec(nodo.izquierda, id) || searchRec(nodo.derecha, id);
     }
 //    public NodoBST delete(NodoBST nodo, String id){
 //
