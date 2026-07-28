@@ -14,7 +14,7 @@ public class PantallaPrincipalInicio {
     private static final String contraseña = "123";
     InterfazPrincipal interfazPrincipal;
 
-    public PantallaPrincipalInicio(JFrame frame,Inscripcion inscripcion, Interfaz1 interfaz1) {
+    public PantallaPrincipalInicio() {
         btnAceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -23,10 +23,7 @@ public class PantallaPrincipalInicio {
                     JOptionPane.showMessageDialog(null,"Contraseña invalida","ERROR",JOptionPane.ERROR_MESSAGE);
                 }
                 else {
-                    interfazPrincipal = new InterfazPrincipal(inscripcion,interfaz1);
-                    frame.setContentPane(interfazPrincipal.getPanelInterfazPrincipal());
-                    frame.revalidate();
-                    frame.repaint();
+                    interfazPrincipal.mostrarMenuInicial();
                 }
             }
         });
@@ -47,5 +44,9 @@ public class PantallaPrincipalInicio {
 
     public JPanel getPanelPantallaInicio() {
         return panelPantallaInicio;
+    }
+
+    public void setInterfazPrincipal(InterfazPrincipal interfazPrincipal) {
+        this.interfazPrincipal = interfazPrincipal;
     }
 }

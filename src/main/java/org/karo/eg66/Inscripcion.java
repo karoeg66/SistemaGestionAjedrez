@@ -10,8 +10,10 @@ public class Inscripcion {
     private JLabel lblNombre;
     private JLabel lblCedula;
     private JButton btnRegistrar;
+    private JPanel panelInscripcion;
     Jugador jugador;
     Torneo torneo;
+    InterfazPrincipal interfazPrincipal;
 
     public Inscripcion(Torneo torneo) {
         this.torneo = torneo;
@@ -51,5 +53,12 @@ public class Inscripcion {
 
     public boolean comprobarCedulaNumerica(String cedula) {
         return cedula.matches("\\d+");
+    }
+
+    public JPanel getPanelInscripcion() {
+        return panelInscripcion;
+    }
+    public void setInterfazPrincipal(InterfazPrincipal interfazPrincipal) {
+        this.interfazPrincipal = interfazPrincipal;
     }
 }

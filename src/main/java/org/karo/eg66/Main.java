@@ -10,10 +10,14 @@ public class Main {
         Torneo torneo = new Torneo();
         Interfaz1 interfaz1 = new Interfaz1();
         Inscripcion inscripcion = new Inscripcion(torneo);
-        PantallaPrincipalInicio pantallaPrincipalInicio = new PantallaPrincipalInicio(frame,inscripcion,interfaz1);
+        PantallaPrincipalInicio pantallaPrincipalInicio = new PantallaPrincipalInicio();
+        InterfazPrincipal interfazPrincipal = new InterfazPrincipal(inscripcion,interfaz1,pantallaPrincipalInicio);
+        pantallaPrincipalInicio.setInterfazPrincipal(interfazPrincipal);
+        interfaz1.setInterfazPrincipal(interfazPrincipal);
+        inscripcion.setInterfazPrincipal(interfazPrincipal);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 600);
-        frame.add(pantallaPrincipalInicio.getPanelPantallaInicio());
+        frame.add(interfazPrincipal.getPanelInterfazPrincipal());
         frame.setVisible(true);
     }
 }
