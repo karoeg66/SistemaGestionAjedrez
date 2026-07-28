@@ -11,19 +11,19 @@ public class GestionPartida {
     }
     public void otorgarPuntos () {
         if (resultadoJugador1 == Resultado.VICTORIA) {
-            partida.jugador1.setPuntaje(partida.jugador1.getPuntaje() + 20);
-            partida.jugador2.setPuntaje(partida.jugador2.getPuntaje() - 10);
-            resultadoPartida = ("GANO: " + partida.jugador1.getNombre() + "\n PERDIO: " + partida.jugador2.getNombre() );
-            partida.resultado = resultadoPartida;
+            partida.getJugador1().setPuntaje(partida.getJugador1().getPuntaje() + 20);
+            partida.getJugador2().setPuntaje(partida.getJugador2().getPuntaje() - 10);
+            resultadoPartida = ("GANO: " + partida.getJugador1().getNombre() + "\n PERDIO: " + partida.getJugador2().getNombre() );
+            partida.setResultado(resultadoPartida);
         }
         else if (resultadoJugador2 == Resultado.VICTORIA) {
-            partida.jugador2.setPuntaje(partida.jugador2.getPuntaje() + 20);
-            partida.jugador1.setPuntaje(partida.jugador1.getPuntaje() - 10);
-            resultadoPartida = ("GANO: " + partida.jugador2.getNombre() + "\n PERDIO: " + partida.jugador1.getNombre() );
-            partida.resultado = resultadoPartida;
+            partida.getJugador2().setPuntaje(partida.getJugador2().getPuntaje() + 20);
+            partida.getJugador1().setPuntaje(partida.getJugador1().getPuntaje() - 10);
+            resultadoPartida = ("GANO: " + partida.getJugador2().getNombre() + "\n PERDIO: " + partida.getJugador1().getNombre() );
+            partida.setResultado(resultadoPartida);
         }
         else {
-            partida.resultado = "EMPATE";
+            partida.setResultado("EMPATE");
         }
 
     }

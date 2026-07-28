@@ -42,4 +42,8 @@ public class Partida {
     public String getResultado() {
         return resultado;
     }
+
+    public void setResultado(String resultado) {
+        this.resultado = resultado;
+    }
 }
