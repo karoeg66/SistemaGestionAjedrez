@@ -47,6 +47,9 @@ public class PantallaPartida {
                 puntajeJugador1 = Integer.parseInt(textoPuntos1);
                 puntajeJugador2 = Integer.parseInt(textoPuntos2);
 
+                if (!comprobarCampo(cboxResultado.getSelectedItem().toString())){
+                    JOptionPane.showMessageDialog(null,"Seleccione una opcion de ganador");
+                };
                 obtenerResultado(cboxResultado.getSelectedItem().toString());
                 obtenerPuntosJugador1(puntajeJugador1);
                 obtenerPuntosJugador2(puntajeJugador2);
