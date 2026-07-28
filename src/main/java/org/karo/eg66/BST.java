@@ -1,6 +1,8 @@
 package org.karo.eg66;
 
-public class BST {
+import java.io.Serializable;
+
+public class BST implements Serializable {
     NodoBST raiz;
 
     public BST(){

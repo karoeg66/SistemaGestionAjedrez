@@ -46,6 +46,13 @@ public class Inscripcion {
                     return;
                 }
 
+                if(torneo.arbol.search(new NodoBST(new Jugador(nombre,cedula)),cedula)){
+                    JOptionPane.showMessageDialog(null," Error: Ya se encuentra inscrita un jugador con ese id", "Cedula invalida",JOptionPane.ERROR_MESSAGE);
+                    txtCedula.setText("");
+                    txtNombre.setText("");
+                    return;
+                }
+
 
                 jugador = new Jugador(nombre, cedula);
                 torneo.cola.enqueue(jugador);
