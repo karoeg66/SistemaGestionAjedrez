@@ -4,13 +4,13 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Partida {
-    int contador = 1;
-    int id;
-    LocalDate fecha;
-    Jugador jugador1;
-    Jugador jugador2;
-    String resultado;
-    DateTimeFormatter formateador = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+    static int contador = 1;
+    private int id;
+    private LocalDate fecha;
+    private Jugador jugador1;
+    private Jugador jugador2;
+    private String resultado;
+    DateTimeFormatter formateador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public Partida(Jugador jugador1, Jugador jugador2) {
         this.id = contador++;
@@ -20,6 +20,26 @@ public class Partida {
     }
 
     public String toString() {
-        return "Fecha: " + fecha.format(formateador) + "\n Jugador1: " + jugador1 + "\nJugador2: " + jugador2 + "\n ----------------------------------" ;
+        return "ID: " + id + "\n Fecha: " + fecha.format(formateador) + "\n Jugador1: " + jugador1 + "\nJugador2: " + jugador2 + "\n ----------------------------------" ;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public Jugador getJugador1() {
+        return jugador1;
+    }
+
+    public Jugador getJugador2() {
+        return jugador2;
+    }
+
+    public String getResultado() {
+        return resultado;
     }
 }
