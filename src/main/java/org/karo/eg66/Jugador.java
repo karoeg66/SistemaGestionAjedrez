@@ -36,4 +36,8 @@ public class Jugador {
     public void setPuntaje(int puntaje) {
         this.puntaje = puntaje;
     }
+
+    public String toString(){
+        return "Nombre: " + this.nombre + ", Id: " + this.id;
+    }
 }
