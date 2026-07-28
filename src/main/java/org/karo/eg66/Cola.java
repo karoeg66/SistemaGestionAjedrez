@@ -5,6 +5,7 @@ public class Cola {
     private NodoCola cabeza;
     private NodoCola cola;
     private int tamanio;
+    int contador = 0;
 
     public Cola(){
         this.cabeza = null;
@@ -35,6 +36,7 @@ public class Cola {
             cola = null;
         }
         tamanio--;
+        contador++;
         return aux;
     }
 
@@ -50,10 +52,30 @@ public class Cola {
     }
 
     public boolean hayDos(){
-        if (getTamanio() >= 2){
+        if (tamanio >= 2){
             return true;
         }
         return false;
+    }
+
+    public boolean huboDos(){
+        if (contador >= 2){
+            return true;
+        }
+        return false;
+    }
+
+    public String mostrarCola(){
+        if (isEmpty()){
+            return "No hay jugadores en lista de espera";
+        }
+        NodoCola puntero = cabeza;
+        String texto = "";
+        while(puntero != null){
+            texto += puntero.getJugador().toString();
+            puntero = puntero.getSiguiente();
+        }
+        return texto;
     }
 
 }

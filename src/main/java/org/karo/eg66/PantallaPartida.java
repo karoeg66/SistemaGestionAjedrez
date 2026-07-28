@@ -51,6 +51,8 @@ public class PantallaPartida {
                 obtenerPuntosJugador1(puntajeJugador1);
                 obtenerPuntosJugador2(puntajeJugador2);
                 gestionPartida.otorgarPuntos();
+                partida.setTerminada(true);
+                interfazPrincipal.mostrarInterfazCompleta();
             }
         });
     }

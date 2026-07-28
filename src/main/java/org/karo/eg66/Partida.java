@@ -10,6 +10,7 @@ public class Partida {
     private Jugador jugador1;
     private Jugador jugador2;
     private String resultado;
+    private boolean isTerminada;
     DateTimeFormatter formateador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public Partida(Jugador jugador1, Jugador jugador2) {
@@ -17,10 +18,12 @@ public class Partida {
         this.fecha = LocalDate.now();
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
+        this.isTerminada = false;
+        this.resultado = "En proceso";
     }
 
     public String toString() {
-        return "ID: " + id + "\n Fecha: " + fecha.format(formateador) + "\n Jugador1: " + jugador1.toString() + "\nJugador2: " + jugador2.toString() + "\nResultado :"+ resultado + "\n ----------------------------------" ;
+        return "ID: " + id + "\n Fecha: " + fecha.format(formateador) + "\n Jugador1: " + jugador1.toString() + "\nJugador2: " + jugador2.toString() + "\nResultado :"+ resultado + "\n ---------------------------------------------------" + "\n" ;
     }
 
     public int getId() {
@@ -45,5 +48,12 @@ public class Partida {
 
     public void setResultado(String resultado) {
         this.resultado = resultado;
+    }
+
+    public boolean isTerminada() {
+        return isTerminada;
+    }
+    public void setTerminada(boolean terminada) {
+        isTerminada = terminada;
     }
 }

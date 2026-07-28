@@ -40,6 +40,12 @@ public class Inscripcion {
                     return;
                 }
 
+                if (cedula.length() < 8) {
+                    JOptionPane.showMessageDialog(null," Error: la cedula debe ser mayor a 8 digitos", "Cedula invalida",JOptionPane.ERROR_MESSAGE);
+                    txtCedula.setText("");
+                    return;
+                }
+
 
                 jugador = new Jugador(nombre, cedula);
                 torneo.cola.enqueue(jugador);
@@ -47,7 +53,7 @@ public class Inscripcion {
                 JOptionPane.showMessageDialog(null, "Jugador inscrito con exito en la cola");
                 txtNombre.setText("");
                 txtCedula.setText("");
-                if (torneo.cola.hayDos()){
+                if (torneo.cola.huboDos() || torneo.cola.hayDos()){
                     interfazPrincipal.mostrarInterfazCompleta();
                     return;
                 }

@@ -23,7 +23,7 @@ public class InicioSesion {
                     passwordField.setText("");
                 }
                 else {
-                    if (interfazPrincipal.inscripcion.torneo.cola.hayDos()){
+                    if (interfazPrincipal.inscripcion.torneo.cola.huboDos() || interfazPrincipal.inscripcion.torneo.cola.hayDos()) {
                         interfazPrincipal.mostrarInterfazCompleta();
                         passwordField.setText("");
                         return;

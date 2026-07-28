@@ -42,10 +42,15 @@ public class InterfazCompleta {
                     return;
                 }
                 try {
-                    String idPartida = JOptionPane.showInputDialog(null, "Ingrese resultado", "Resultado", JOptionPane.QUESTION_MESSAGE);
+                    String idPartida = JOptionPane.showInputDialog(null, "Ingrese ID de partida", "Resultado", JOptionPane.QUESTION_MESSAGE);
                     if (!comprobarCampo(idPartida)) {
                         JOptionPane.showMessageDialog(null, "Resultado no valido", "Resultado", JOptionPane.WARNING_MESSAGE);
                         return;
+                    }
+                    if (torneo.lista.obtenerPartida(Integer.parseInt(idPartida)).isTerminada()) {
+                        JOptionPane.showMessageDialog(null, "La partida ya tiene un resultado registrado", "Resultado", JOptionPane.WARNING_MESSAGE);
+                        return;
+
                     }
                     if (!torneo.lista.buscarPartida(Integer.parseInt(idPartida))) {
                         JOptionPane.showMessageDialog(null, "Partida no encontrada", "Resultado", JOptionPane.WARNING_MESSAGE);
@@ -63,6 +68,10 @@ public class InterfazCompleta {
         btnFormarPartida.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (!torneo.cola.hayDos()){
+                    JOptionPane.showMessageDialog(null,"No hay suficientes jugadores", "Error", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
                 try {
                 Partida partida = new Partida(torneo.cola.dequeue(),torneo.cola.dequeue());
                     torneo.lista.añadirAlFinal(partida);
@@ -80,6 +89,12 @@ public class InterfazCompleta {
                 }
                 JOptionPane.showMessageDialog(null, torneo.lista.mostrarPartidas());
 
+            }
+        });
+        btnListaDeEspera.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null,torneo.cola.mostrarCola());
             }
         });
     }
