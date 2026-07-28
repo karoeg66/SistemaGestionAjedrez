@@ -7,7 +7,7 @@ import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
         JFrame frame = new JFrame();
-        Torneo torneo = new Torneo();
+        TorneoEstructuras torneo = new TorneoEstructuras();
         InterfazInicial interfaz1 = new InterfazInicial();
         Inscripcion inscripcion = new Inscripcion(torneo);
         InicioSesion pantallaPrincipalInicio = new InicioSesion();

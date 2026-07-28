@@ -12,10 +12,10 @@ public class Inscripcion {
     private JButton btnRegistrar;
     private JPanel panelInscripcion;
     Jugador jugador;
-    Torneo torneo;
+    TorneoEstructuras torneo;
     InterfazPrincipal interfazPrincipal;
 
-    public Inscripcion(Torneo torneo) {
+    public Inscripcion(TorneoEstructuras torneo) {
         this.torneo = torneo;
 
         btnRegistrar.addActionListener(new ActionListener() {

@@ -1,7 +1,6 @@
 package org.karo.eg66;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -21,10 +20,10 @@ public class PantallaPartida {
     GestionPartida gestionPartida;
     int puntajeJugador1;
     int puntajeJugador2;
-    Torneo torneo;
+    TorneoEstructuras torneo;
     InterfazPrincipal interfazPrincipal;
 
-    public PantallaPartida(Partida partida, Torneo torneo,InterfazPrincipal interfazPrincipal) {
+    public PantallaPartida(Partida partida, TorneoEstructuras torneo, InterfazPrincipal interfazPrincipal) {
         this.gestionPartida = new GestionPartida(partida);
         lblJugador1.setText(partida.jugador1.getNombre());
         lblJugador2.setText(partida.jugador2.getNombre());
