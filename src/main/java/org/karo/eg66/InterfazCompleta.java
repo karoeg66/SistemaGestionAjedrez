@@ -1,6 +1,8 @@
 package org.karo.eg66;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class InterfazCompleta {
     private JLabel lblTitle;
@@ -14,4 +16,23 @@ public class InterfazCompleta {
     private JButton btnMostrarJugadoresSegunProfundidad;
     private JButton btnInscribir;
     private JButton btnSalir;
+    private JPanel panelInterfazCompleta;
+    InterfazPrincipal interfazPrincipal;
+
+    public InterfazCompleta() {
+        btnInscribir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                interfazPrincipal.mostrarInscripcion();
+            }
+        });
+    }
+
+    public void setInterfazPrincipal(InterfazPrincipal interfazPrincipal) {
+        this.interfazPrincipal = interfazPrincipal;
+    }
+
+    public JPanel getPanelInterfazCompleta() {
+        return panelInterfazCompleta;
+    }
 }
