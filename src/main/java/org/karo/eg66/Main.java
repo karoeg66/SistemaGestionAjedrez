@@ -8,9 +8,9 @@ public class Main {
     public static void main(String[] args) {
         JFrame frame = new JFrame();
         Torneo torneo = new Torneo();
-        Interfaz1 interfaz1 = new Interfaz1();
+        InterfazInicial interfaz1 = new InterfazInicial();
         Inscripcion inscripcion = new Inscripcion(torneo);
-        PantallaPrincipalInicio pantallaPrincipalInicio = new PantallaPrincipalInicio();
+        InicioSesion pantallaPrincipalInicio = new InicioSesion();
         InterfazPrincipal interfazPrincipal = new InterfazPrincipal(inscripcion,interfaz1,pantallaPrincipalInicio);
         pantallaPrincipalInicio.setInterfazPrincipal(interfazPrincipal);
         interfaz1.setInterfazPrincipal(interfazPrincipal);

@@ -6,12 +6,12 @@ import java.awt.*;
 public class InterfazPrincipal {
     private JPanel panelInterfazPrincipal;
     Inscripcion inscripcion;
-    Interfaz1 interfaz1;
-    PantallaPrincipalInicio pantallaPrincipalInicio;
+    InterfazInicial interfaz1;
+    InicioSesion pantallaPrincipalInicio;
     private CardLayout cardLayout;
 
 
-    public InterfazPrincipal(Inscripcion inscripcion,  Interfaz1 interfaz1,PantallaPrincipalInicio pantallaPrincipalInicio) {
+    public InterfazPrincipal(Inscripcion inscripcion, InterfazInicial interfaz1, InicioSesion pantallaPrincipalInicio) {
         this.inscripcion = inscripcion;
         this.interfaz1 = interfaz1;
         this.pantallaPrincipalInicio = pantallaPrincipalInicio;

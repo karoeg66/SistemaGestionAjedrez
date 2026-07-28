@@ -1,11 +1,10 @@
 package org.karo.eg66;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PantallaPrincipalInicio {
+public class InicioSesion {
     private JLabel lblTitulo;
     private JPasswordField passwordField;
     private JLabel lblContraseña;
@@ -14,7 +13,7 @@ public class PantallaPrincipalInicio {
     private static final String contraseña = "123";
     InterfazPrincipal interfazPrincipal;
 
-    public PantallaPrincipalInicio() {
+    public InicioSesion() {
         btnAceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
