@@ -100,7 +100,6 @@ public class ListaDoble {
         String text = "";
         while (puntero != null) {
             text += puntero.partida.toString() ;
-            text += "\n";
             puntero = puntero.siguiente;
             }
         return text;
