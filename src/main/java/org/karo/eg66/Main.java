@@ -11,10 +11,12 @@ public class Main {
         InterfazInicial interfaz1 = new InterfazInicial();
         Inscripcion inscripcion = new Inscripcion(torneo);
         InicioSesion pantallaPrincipalInicio = new InicioSesion();
-        InterfazPrincipal interfazPrincipal = new InterfazPrincipal(inscripcion,interfaz1,pantallaPrincipalInicio);
+        InterfazCompleta interfazCompleta = new InterfazCompleta(torneo);
+        InterfazPrincipal interfazPrincipal = new InterfazPrincipal(inscripcion,interfaz1,pantallaPrincipalInicio,interfazCompleta);
         pantallaPrincipalInicio.setInterfazPrincipal(interfazPrincipal);
         interfaz1.setInterfazPrincipal(interfazPrincipal);
         inscripcion.setInterfazPrincipal(interfazPrincipal);
+        interfazCompleta.setInterfazPrincipal(interfazPrincipal);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 600);
         frame.add(interfazPrincipal.getPanelInterfazPrincipal());

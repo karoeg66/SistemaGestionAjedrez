@@ -20,9 +20,16 @@ public class InicioSesion {
                 String password = String.valueOf(passwordField.getPassword());
                 if (!validarContraseña(password)) {
                     JOptionPane.showMessageDialog(null,"Contraseña invalida","ERROR",JOptionPane.ERROR_MESSAGE);
+                    passwordField.setText("");
                 }
                 else {
+                    if (interfazPrincipal.inscripcion.torneo.cola.hayDos()){
+                        interfazPrincipal.mostrarInterfazCompleta();
+                        passwordField.setText("");
+                        return;
+                    }
                     interfazPrincipal.mostrarMenuInicial();
+                    passwordField.setText("");
                 }
             }
         });

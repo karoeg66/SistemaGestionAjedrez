@@ -61,4 +61,32 @@ public class ListaDoble {
     public boolean isEmpty() {
         return cabeza == null;
     }
+
+    public boolean buscarPartida(int id) {
+        if (isEmpty()) {
+            return false;
+        }
+        NodoListaDoble puntero = cabeza;
+        while (puntero != null) {
+            if (puntero.partida.id == id) {
+                return true;
+            }
+            puntero = puntero.siguiente;
+        }
+        return false;
+    }
+
+    public Partida obtenerPartida(int id) {
+        if (isEmpty()) {
+            return null;
+        }
+        NodoListaDoble puntero = cabeza;
+        while (puntero != null) {
+            if (puntero.partida.id == id) {
+                return puntero.partida;
+            }
+            puntero = puntero.siguiente;
+        }
+        return null;
+    }
 }

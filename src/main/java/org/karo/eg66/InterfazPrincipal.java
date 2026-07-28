@@ -8,17 +8,22 @@ public class InterfazPrincipal {
     Inscripcion inscripcion;
     InterfazInicial interfaz1;
     InicioSesion pantallaPrincipalInicio;
+    InterfazCompleta interfazCompleta;
+    PantallaPartida pantallaPartida;
     private CardLayout cardLayout;
 
 
-    public InterfazPrincipal(Inscripcion inscripcion, InterfazInicial interfaz1, InicioSesion pantallaPrincipalInicio) {
+    public InterfazPrincipal(Inscripcion inscripcion, InterfazInicial interfaz1, InicioSesion pantallaPrincipalInicio,InterfazCompleta interfazCompleta) {
         this.inscripcion = inscripcion;
         this.interfaz1 = interfaz1;
         this.pantallaPrincipalInicio = pantallaPrincipalInicio;
+        this.interfazCompleta = interfazCompleta;
+
         cardLayout = (CardLayout) panelInterfazPrincipal.getLayout();
         panelInterfazPrincipal.add(interfaz1.getPanelInterfaz1(),"menu inicial");
         panelInterfazPrincipal.add(pantallaPrincipalInicio.getPanelPantallaInicio(),"inicio sesion");
         panelInterfazPrincipal.add(inscripcion.getPanelInscripcion(),"inscripcion");
+        panelInterfazPrincipal.add(interfazCompleta.getPanelInterfazCompleta(), "interfaz completa");;
         mostrarInicioSesion();
 
     }
@@ -35,6 +40,14 @@ public class InterfazPrincipal {
         cardLayout.show(panelInterfazPrincipal,"inicio sesion");
     }
 
+    public void mostrarInterfazCompleta(){
+        cardLayout.show(panelInterfazPrincipal,"interfaz completa");
+    }
+
+    public void mostrarPantallaPartida(PantallaPartida pantallaPartida) {
+        panelInterfazPrincipal.add(pantallaPartida.getPanelPantallaPartida(), "pantalla partida");
+        cardLayout.show(panelInterfazPrincipal, "pantalla partida");
+    }
 
     public JPanel getPanelInterfazPrincipal() {
         return panelInterfazPrincipal;
