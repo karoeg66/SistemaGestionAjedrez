@@ -5,14 +5,20 @@
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-658213"/>
+    </properties>
     <border type="none"/>
     <children>
       <component id="37c17" class="javax.swing.JLabel" binding="lblTitle">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Segoe UI Black" size="24" style="1"/>
+          <foreground color="-5087377"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
           <text value="Sistema de gestion de Torneo de ajedrez"/>
         </properties>
       </component>
@@ -23,25 +29,31 @@
       </vspacer>
       <component id="955ef" class="javax.swing.JButton" binding="btnInscribir">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-5087377"/>
+          <foreground color="-658213"/>
           <text value="Inscribir Jugador"/>
         </properties>
       </component>
       <component id="962eb" class="javax.swing.JButton" binding="btnRankingJugadores">
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-5087377"/>
+          <foreground color="-658213"/>
           <text value="Ranking de jugadores"/>
         </properties>
       </component>
       <component id="b70a0" class="javax.swing.JButton" binding="btnRetirarJugador">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-5087377"/>
+          <foreground color="-658213"/>
           <text value="Retirar jugador"/>
         </properties>
       </component>
