@@ -3,7 +3,7 @@ package org.karo.eg66;
 import java.time.LocalDate;
 
 public class Partida {
-    int contador = 0;
+    int contador = 1;
     int id;
     LocalDate fecha;
     Jugador jugador1;
