@@ -27,7 +27,7 @@ public class ListaDoble {
         }
         NodoListaDoble puntero = cabeza;
         while (puntero != null) {
-            if (puntero.partida.id == id) {
+            if (puntero.partida.getId() == id) {
                 Partida aux = puntero.partida;
 
 
@@ -70,7 +70,7 @@ public class ListaDoble {
         }
         NodoListaDoble puntero = cabeza;
         while (puntero != null) {
-            if (puntero.partida.id == id) {
+            if (puntero.partida.getId() == id) {
                 return true;
             }
             puntero = puntero.siguiente;
@@ -84,7 +84,7 @@ public class ListaDoble {
         }
         NodoListaDoble puntero = cabeza;
         while (puntero != null) {
-            if (puntero.partida.id == id) {
+            if (puntero.partida.getId() == id) {
                 return puntero.partida;
             }
             puntero = puntero.siguiente;
