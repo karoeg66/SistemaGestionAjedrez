@@ -3,7 +3,6 @@ package org.karo.eg66;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
 
 public class InterfazCompleta {
     private JLabel lblTitle;
@@ -43,7 +42,24 @@ public class InterfazCompleta {
                     JOptionPane.showMessageDialog(null, "Resultado no valido", "Resultado", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
-                if ()
+                if (!torneo.lista.buscarPartida(Integer.parseInt(idPartida))){
+                    JOptionPane.showMessageDialog(null, "Partida no encontrada", "Resultado", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                PantallaPartida pantallaPartida  = new PantallaPartida()
+
+
+            }
+        });
+        btnFormarPartida.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                Partida partida = new Partida(torneo.cola.dequeue(),torneo.cola.dequeue());
+                    torneo.lista.añadirAlFinal(partida);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
     }

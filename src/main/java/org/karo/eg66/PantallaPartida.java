@@ -62,7 +62,7 @@ public class PantallaPartida {
             if (campo.equals("JUGADOR 1")) {
                 gestionPartida.resultadoJugador1 = Resultado.VICTORIA;
                 gestionPartida.resultadoJugador2 = Resultado.DERROTA;
-            } else if (campo.equals("JUGADOR 2")) { // Usar else if mejora la eficiencia
+            } else if (campo.equals("JUGADOR 2")) {
                 gestionPartida.resultadoJugador2 = Resultado.VICTORIA;
                 gestionPartida.resultadoJugador1 = Resultado.DERROTA;
             } else if (campo.equals("EMPATE")) {
