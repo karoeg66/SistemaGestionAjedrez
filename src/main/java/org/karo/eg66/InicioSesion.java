@@ -20,9 +20,11 @@ public class InicioSesion {
                 String password = String.valueOf(passwordField.getPassword());
                 if (!validarContraseña(password)) {
                     JOptionPane.showMessageDialog(null,"Contraseña invalida","ERROR",JOptionPane.ERROR_MESSAGE);
+                    passwordField.setText("");
                 }
                 else {
                     interfazPrincipal.mostrarMenuInicial();
+                    passwordField.setText("");
                 }
             }
         });

@@ -26,6 +26,12 @@ public class InterfazCompleta {
                 interfazPrincipal.mostrarInscripcion();
             }
         });
+        btnSalir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                interfazPrincipal.mostrarInicioSesion();
+            }
+        });
     }
 
     public void setInterfazPrincipal(InterfazPrincipal interfazPrincipal) {
