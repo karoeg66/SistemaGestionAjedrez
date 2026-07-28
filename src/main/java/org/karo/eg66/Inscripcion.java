@@ -45,9 +45,16 @@ public class Inscripcion {
                 torneo.cola.enqueue(jugador);
 
                 JOptionPane.showMessageDialog(null, "Jugador inscrito con exito en la cola");
-                interfazPrincipal.mostrarInterfazCompleta();
                 txtNombre.setText("");
                 txtCedula.setText("");
+                if (torneo.cola.hayDos()){
+                    interfazPrincipal.mostrarInterfazCompleta();
+                    return;
+                }
+
+                interfazPrincipal.mostrarMenuInicial();
+
+
             }
         });
     }

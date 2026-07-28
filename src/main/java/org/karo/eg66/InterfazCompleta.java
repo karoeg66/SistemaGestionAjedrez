@@ -3,6 +3,7 @@ package org.karo.eg66;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
 
 public class InterfazCompleta {
     private JLabel lblTitle;
@@ -19,7 +20,7 @@ public class InterfazCompleta {
     private JPanel panelInterfazCompleta;
     InterfazPrincipal interfazPrincipal;
 
-    public InterfazCompleta() {
+    public InterfazCompleta(Torneo torneo) {
         btnInscribir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -32,6 +33,19 @@ public class InterfazCompleta {
                 interfazPrincipal.mostrarInicioSesion();
             }
         });
+
+        btnIngresarResultado.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String idPartida= JOptionPane.showInputDialog(null, "Ingrese resultado", "Resultado", JOptionPane.QUESTION_MESSAGE);
+
+                if (!comprobarCampo(idPartida)) {
+                    JOptionPane.showMessageDialog(null, "Resultado no valido", "Resultado", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                if ()
+            }
+        });
     }
 
     public void setInterfazPrincipal(InterfazPrincipal interfazPrincipal) {
@@ -40,5 +54,9 @@ public class InterfazCompleta {
 
     public JPanel getPanelInterfazCompleta() {
         return panelInterfazCompleta;
+    }
+
+    public boolean comprobarCampo(String campo) {
+        return campo != null && !campo.trim().isEmpty();
     }
 }

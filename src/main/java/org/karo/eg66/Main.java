@@ -11,7 +11,7 @@ public class Main {
         InterfazInicial interfaz1 = new InterfazInicial();
         Inscripcion inscripcion = new Inscripcion(torneo);
         InicioSesion pantallaPrincipalInicio = new InicioSesion();
-        InterfazCompleta interfazCompleta = new InterfazCompleta();
+        InterfazCompleta interfazCompleta = new InterfazCompleta(torneo);
         InterfazPrincipal interfazPrincipal = new InterfazPrincipal(inscripcion,interfaz1,pantallaPrincipalInicio,interfazCompleta);
         pantallaPrincipalInicio.setInterfazPrincipal(interfazPrincipal);
         interfaz1.setInterfazPrincipal(interfazPrincipal);
