@@ -71,10 +71,10 @@ public class InterfazCompleta {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(torneo.lista.isEmpty()){
-                    JOptionPane.showMessageDialog(null, "No hay partidas creadas, Resultado");
+                    JOptionPane.showMessageDialog(null, "No hay partidas creadas", "Partidas", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
-
+                JOptionPane.showMessageDialog(null, torneo.lista.mostrarPartidas());
 
             }
         });
