@@ -1,7 +1,9 @@
 package org.karo.eg66;
 
 
-public class Cola {
+import java.io.Serializable;
+
+public class Cola implements Serializable {
     private NodoCola cabeza;
     private NodoCola cola;
     private int tamanio;

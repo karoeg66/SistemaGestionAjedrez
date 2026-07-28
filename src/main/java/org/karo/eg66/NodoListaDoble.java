@@ -1,6 +1,8 @@
 package org.karo.eg66;
 
-public class NodoListaDoble {
+import java.io.Serializable;
+
+public class NodoListaDoble implements Serializable {
     Partida partida;
     NodoListaDoble siguiente;
     NodoListaDoble anterior;

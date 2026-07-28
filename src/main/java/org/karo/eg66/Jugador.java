@@ -1,6 +1,8 @@
 package org.karo.eg66;
 
-public class Jugador {
+import java.io.Serializable;
+
+public class Jugador implements Serializable {
     private String nombre;
     private String id;
     private int puntaje;

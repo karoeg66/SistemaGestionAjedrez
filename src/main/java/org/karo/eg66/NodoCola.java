@@ -1,7 +1,9 @@
 package org.karo.eg66;
 
 
-public class NodoCola {
+import java.io.Serializable;
+
+public class NodoCola implements Serializable {
     private Jugador jugador;
     private NodoCola siguiente;
 
