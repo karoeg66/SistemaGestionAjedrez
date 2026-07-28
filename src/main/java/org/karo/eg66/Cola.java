@@ -49,4 +49,11 @@ public class Cola {
         return tamanio;
     }
 
+    public boolean hayDos(){
+        if (getTamanio() >= 2){
+            return true;
+        }
+        return false;
+    }
+
 }
