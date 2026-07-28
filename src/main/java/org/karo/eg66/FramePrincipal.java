@@ -1,6 +1,7 @@
 package org.karo.eg66;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class FramePrincipal extends JFrame {
     public FramePrincipal() {
@@ -14,9 +15,16 @@ public class FramePrincipal extends JFrame {
         interfaz1.setInterfazPrincipal(interfazPrincipal);
         inscripcion.setInterfazPrincipal(interfazPrincipal);
         interfazCompleta.setInterfazPrincipal(interfazPrincipal);
+        setTitle("Torneo Ajedrez");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
         add(interfazPrincipal.getPanelInterfazPrincipal());
         setVisible(true);
+        try {
+            Image icono = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icono.png"));
+            setIconImage(icono);
+        } catch (Exception e) {
+            System.out.println("No se pudo cargar el icono de la aplicación: " + e.getMessage());
+        }
     }
 }
