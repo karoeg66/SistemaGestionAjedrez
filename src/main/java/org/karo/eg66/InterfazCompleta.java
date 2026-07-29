@@ -160,6 +160,15 @@ public class InterfazCompleta {
                         }
                     }
 
+                    int cantidadEnCola = torneo.cola.getTamanio();
+                    boolean tienePartidas = (torneo.lista != null && !torneo.lista.isEmpty());
+
+                    if (cantidadEnCola >= 2 || tienePartidas) {
+                        interfazPrincipal.mostrarInterfazCompleta();
+                    } else {
+                        interfazPrincipal.mostrarMenuInicial();
+                    }
+
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Error al retirar: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }

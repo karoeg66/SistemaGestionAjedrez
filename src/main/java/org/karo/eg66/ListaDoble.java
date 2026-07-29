@@ -95,7 +95,7 @@ public class ListaDoble implements Serializable {
 
     public int obtenerMaxIdPartida() {
         int maxId = 0;
-        NodoListaDoble actual = cabeza; // Ajusta 'cabeza' al nombre de tu primer nodo (ej: inicio, primero)
+        NodoListaDoble actual = cabeza;
 
         while (actual != null) {
             if (actual.partida != null && actual.partida.getId() > maxId) {

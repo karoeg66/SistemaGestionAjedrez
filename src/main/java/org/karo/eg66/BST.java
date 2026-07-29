@@ -61,6 +61,10 @@ public class BST implements Serializable {
         return search(id) != null;
     }
 
+    public boolean existeNombre(String nombre) {
+        return search(nombre) != null;
+    }
+
 
     public Jugador delete(String id) {
         Jugador j = search(id);
@@ -118,16 +122,10 @@ public class BST implements Serializable {
     }
     private String mostrarRanking(NodoBST nodo){
         if(nodo == null) return "";
-
-        mostrarRanking(nodo.derecha);
-
-        ranking += nodo.jugador.getNombre()
-                + " | "
-                + nodo.jugador.getPuntaje()
-                + "\n";
-
         mostrarRanking(nodo.izquierda);
-
+        ranking += nodo.jugador.getNombre() + " | " +
+                nodo.jugador.getPuntaje() + "\n";
+        mostrarRanking(nodo.derecha);
         return ranking;
     }
 
