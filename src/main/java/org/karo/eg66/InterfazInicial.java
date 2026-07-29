@@ -12,17 +12,16 @@ public class InterfazInicial {
     private JButton btnRankingJugadores;
     private JLabel lblInfo;
     InterfazPrincipal interfazPrincipal;
+    TorneoEstructuras torneo;
 
 
     public InterfazInicial(TorneoEstructuras torneo) {
-        btnRetirarJugador.setVisible(false);
-        btnRankingJugadores.setVisible(false);
+        this.torneo = torneo;
+        actualizarBotones();
         btnInscribir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 interfazPrincipal.mostrarInscripcion();
-                btnRankingJugadores.setVisible(true);
-                btnRetirarJugador.setVisible(true);
             }
         });
 
@@ -79,6 +78,8 @@ public class InterfazInicial {
                                 JOptionPane.INFORMATION_MESSAGE);
                     }
 
+                   actualizarBotones();
+
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Error al retirar: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -96,6 +97,18 @@ public class InterfazInicial {
     }
     public void setInterfazPrincipal(InterfazPrincipal interfazPrincipal) {
         this.interfazPrincipal = interfazPrincipal;
+    }
+
+    public void actualizarBotones() {
+        boolean tieneJugadores = (torneo != null) && (torneo.cola.getTamanio() >= 1 || torneo.arbol.raiz != null);
+        btnRetirarJugador.setVisible(tieneJugadores);
+        btnRankingJugadores.setVisible(tieneJugadores);
+
+
+        if (panelInterfaz1 != null) {
+            panelInterfaz1.revalidate();
+            panelInterfaz1.repaint();
+        }
     }
 
 

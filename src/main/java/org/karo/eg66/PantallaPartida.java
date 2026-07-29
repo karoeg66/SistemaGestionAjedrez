@@ -49,6 +49,7 @@ public class PantallaPartida {
 
                 if (!comprobarCampo(cboxResultado.getSelectedItem().toString())){
                     JOptionPane.showMessageDialog(null,"Seleccione una opcion de ganador");
+                    return;
                 };
                 obtenerResultado(cboxResultado.getSelectedItem().toString());
                 obtenerPuntosJugador1(puntajeJugador1);

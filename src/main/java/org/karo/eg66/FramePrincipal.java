@@ -8,6 +8,9 @@ public class FramePrincipal extends JFrame {
         TorneoEstructuras torneo = (TorneoEstructuras) GestorArchivos.cargar("torneo_completo.dat");
         if (torneo == null) {
             torneo = new TorneoEstructuras();
+        } else {
+            int maxId = torneo.lista.obtenerMaxIdPartida();
+            Partida.contador = maxId + 1;
         }
         InterfazInicial interfaz1 = new InterfazInicial(torneo);
         Inscripcion inscripcion = new Inscripcion(torneo);
