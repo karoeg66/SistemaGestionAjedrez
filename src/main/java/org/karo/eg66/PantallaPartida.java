@@ -85,7 +85,7 @@ public class PantallaPartida {
             } else if (campo.equals("JUGADOR 2")) {
                 gestionPartida.resultadoJugador2 = Resultado.VICTORIA;
                 gestionPartida.resultadoJugador1 = Resultado.DERROTA;
-                jugador2.setDerrotas((jugador1.getDerrotas() + 1));
+                jugador1.setDerrotas((jugador1.getDerrotas() + 1));
             } else if (campo.equals("EMPATE")) {
                 gestionPartida.resultadoJugador1 = Resultado.EMPATE;
                 gestionPartida.resultadoJugador2 = Resultado.EMPATE;
