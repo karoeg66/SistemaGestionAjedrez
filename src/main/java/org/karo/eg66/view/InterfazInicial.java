@@ -1,4 +1,7 @@
-package org.karo.eg66;
+package org.karo.eg66.view;
+
+import org.karo.eg66.model.Jugador;
+import org.karo.eg66.model.TorneoEstructuras;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

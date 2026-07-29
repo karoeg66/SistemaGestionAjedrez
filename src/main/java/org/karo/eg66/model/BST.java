@@ -1,9 +1,9 @@
-package org.karo.eg66;
+package org.karo.eg66.model;
 
 import java.io.Serializable;
 
 public class BST implements Serializable {
-    NodoBST raiz;
+    public NodoBST raiz;
 
     public BST(){
         this.raiz = null;

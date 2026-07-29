@@ -1,4 +1,4 @@
-package org.karo.eg66;
+package org.karo.eg66.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;

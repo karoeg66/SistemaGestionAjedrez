@@ -1,4 +1,4 @@
-package org.karo.eg66;
+package org.karo.eg66.controller;
 
 import java.io.*;
 

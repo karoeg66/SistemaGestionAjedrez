@@ -1,6 +1,5 @@
-package org.karo.eg66;
+package org.karo.eg66.model;
 
-import javax.swing.*;
 import java.io.Serializable;
 
 public class ListaDoble implements Serializable {

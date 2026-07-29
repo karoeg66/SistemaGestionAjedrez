@@ -1,4 +1,4 @@
-package org.karo.eg66;
+package org.karo.eg66.model;
 
 
 import java.io.Serializable;
@@ -133,5 +133,25 @@ public class Cola implements Serializable {
         }
 
         return null;
+    }
+
+    public NodoCola getCabeza() {
+        return cabeza;
+    }
+
+    public void setCabeza(NodoCola cabeza) {
+        this.cabeza = cabeza;
+    }
+
+    public NodoCola getCola() {
+        return cola;
+    }
+
+    public void setCola(NodoCola cola) {
+        this.cola = cola;
+    }
+
+    public void setTamanio(int tamanio) {
+        this.tamanio = tamanio;
     }
 }

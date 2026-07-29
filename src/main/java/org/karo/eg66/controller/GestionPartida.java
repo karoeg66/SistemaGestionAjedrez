@@ -1,9 +1,12 @@
-package org.karo.eg66;
+package org.karo.eg66.controller;
+
+import org.karo.eg66.model.Partida;
+import org.karo.eg66.enums.Resultado;
 
 public class GestionPartida {
-    Resultado resultadoJugador1;
-    Resultado resultadoJugador2;
-    Partida partida;
+    public Resultado resultadoJugador1;
+    public Resultado resultadoJugador2;
+    public Partida partida;
     String resultadoPartida;
 
     public GestionPartida(Partida partida) {

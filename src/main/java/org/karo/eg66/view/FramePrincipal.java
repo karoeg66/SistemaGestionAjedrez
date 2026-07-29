@@ -1,4 +1,8 @@
-package org.karo.eg66;
+package org.karo.eg66.view;
+
+import org.karo.eg66.controller.GestorArchivos;
+import org.karo.eg66.model.Partida;
+import org.karo.eg66.model.TorneoEstructuras;
 
 import javax.swing.*;
 import java.awt.*;
