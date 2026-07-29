@@ -43,7 +43,7 @@
         </constraints>
         <properties>
           <font name="Segoe UI Light" size="14"/>
-          <foreground color="-10197656"/>
+          <foreground color="-8816263"/>
           <text value="Debes ingresar al menos 2 jugadores para desbloquear todas las funcionalidades."/>
         </properties>
       </component>
