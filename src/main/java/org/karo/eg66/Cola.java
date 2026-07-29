@@ -30,25 +30,23 @@ public class Cola implements Serializable {
 
     public Jugador dequeue() throws Exception {
         if(isEmpty()){
-            throw new Exception("La cola esta vacia");
+            throw new Exception("La cola está vacía");
         }
         Jugador aux = cabeza.getJugador();
         cabeza = cabeza.getSiguiente();
-        if (isEmpty()){
+        tamanio--;
+
+        if (cabeza == null){
             cola = null;
         }
-        tamanio--;
+
         contador++;
         return aux;
     }
 
     public boolean isEmpty(){
-        if(cabeza == null){
-            return true;
-        }
-        return false;
+        return cabeza == null || tamanio == 0;
     }
-
     public int getTamanio(){
         return tamanio;
     }
@@ -119,7 +117,7 @@ public class Cola implements Serializable {
         while (puntero.getSiguiente() != null) {
 
             if (Integer.parseInt(puntero.getSiguiente().getJugador().getId()) == id) {
-                Jugador eliminado = puntero.getJugador();
+                Jugador eliminado = puntero.getSiguiente().getJugador();
 
                 puntero.setSiguiente(puntero.getSiguiente().getSiguiente());
 
