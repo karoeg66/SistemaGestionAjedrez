@@ -55,6 +55,15 @@ public class PantallaPartida {
                 obtenerPuntosJugador1(puntajeJugador1);
                 obtenerPuntosJugador2(puntajeJugador2);
                 gestionPartida.otorgarPuntos();
+                Jugador j1 = partida.getJugador1();
+                Jugador j2 = partida.getJugador2();
+
+                torneo.arbol.delete(j1.getId());
+                torneo.arbol.raiz = torneo.arbol.insert(torneo.arbol.raiz, j1);
+
+                torneo.arbol.delete(j2.getId());
+                torneo.arbol.raiz = torneo.arbol.insert(torneo.arbol.raiz, j2);
+
                 partida.setTerminada(true);
                 interfazPrincipal.mostrarInterfazCompleta();
             }
