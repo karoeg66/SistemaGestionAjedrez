@@ -20,7 +20,7 @@ public class BST implements Serializable {
             nodo.derecha = insert(nodo.derecha, jugador);
         }
         else{
-            //Desempate
+            // Desempate
             if(jugador.getDerrotas() < nodo.jugador.getDerrotas()){
                 nodo.izquierda = insert(nodo.izquierda, jugador);
             }
@@ -39,7 +39,6 @@ public class BST implements Serializable {
         return nodo;
     }
 
-
     public Jugador search(String id) {
         return searchRec(this.raiz, id);
     }
@@ -57,41 +56,53 @@ public class BST implements Serializable {
         }
         return searchRec(nodo.derecha, id);
     }
-    public NodoBST delete(NodoBST nodo, String id){
-        Jugador jugador = search(id);
-        if(jugador == null){
-            return nodo;
-        }
-        return deleteRec(nodo, jugador.getId(), jugador.getPuntaje());
+
+    public boolean existe(String id) {
+        return search(id) != null;
     }
-    private NodoBST deleteRec(NodoBST nodo, String id, int puntaje){
-        if(nodo == null){
+
+
+    public Jugador delete(String id) {
+        Jugador j = search(id);
+        if (j != null) {
+            this.raiz = deleteRec(this.raiz, j.getId(), j.getPuntaje());
+            return j;
+        }
+        return null;
+    }
+
+    private NodoBST deleteRec(NodoBST nodo, String id, int puntaje) {
+        if (nodo == null) {
             return null;
         }
+
         int c;
-        if(puntaje != nodo.jugador.getPuntaje()){
+        if (puntaje != nodo.jugador.getPuntaje()) {
             c = Integer.compare(puntaje, nodo.jugador.getPuntaje());
-        }
-        else{
+        } else {
             c = id.trim().compareToIgnoreCase(nodo.jugador.getId().trim());
         }
-        if(c < 0){
+
+        if (c < 0) {
             nodo.izquierda = deleteRec(nodo.izquierda, id, puntaje);
-        }
-        else if(c > 0){
-            nodo.derecha =deleteRec(nodo.derecha, id, puntaje);
-        }
-        else{
-            if(nodo.izquierda == null) return nodo.derecha;
-            if(nodo.derecha == null) return nodo.izquierda;
+        } else if (c > 0) {
+            nodo.derecha = deleteRec(nodo.derecha, id, puntaje);
+        } else {
+
+            if (nodo.izquierda == null) return nodo.derecha;
+            if (nodo.derecha == null) return nodo.izquierda;
+
 
             NodoBST sucesor = nodo.derecha;
-            while(sucesor.izquierda != null){
+            while (sucesor.izquierda != null) {
                 sucesor = sucesor.izquierda;
             }
-            nodo.jugador = sucesor.jugador;
-            nodo.derecha = deleteRec(nodo.derecha, sucesor.jugador.getId(), sucesor.jugador.getPuntaje());
 
+
+            nodo.jugador = sucesor.jugador;
+
+
+            nodo.derecha = deleteRec(nodo.derecha, sucesor.jugador.getId(), sucesor.jugador.getPuntaje());
         }
         return nodo;
     }

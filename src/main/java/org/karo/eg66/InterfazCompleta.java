@@ -115,11 +115,12 @@ public class InterfazCompleta {
                         JOptionPane.showMessageDialog(null, "ID invalido", "ID", JOptionPane.WARNING_MESSAGE);
                         return;
                     }
-                    if(!torneo.cola.buscar(Integer.parseInt(idJugador))){
+                    if(torneo.arbol.search(idJugador)==null && !torneo.cola.buscar(Integer.parseInt(idJugador))){
                         JOptionPane.showMessageDialog(null, "Jugador no encontrado", "ERROR", JOptionPane.WARNING_MESSAGE);
                         return;
                     }
-                    JOptionPane.showMessageDialog(null, "Jugador eliminado:" + torneo.cola.eliminarJugador(Integer.parseInt(idJugador)).toString());
+                    torneo.cola.eliminarJugador(Integer.parseInt(idJugador));
+                    JOptionPane.showMessageDialog(null, "Jugador eliminado:" + torneo.arbol.delete(idJugador));
 
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null,ex.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);

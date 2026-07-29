@@ -46,7 +46,7 @@ public class Inscripcion {
                     return;
                 }
 
-                if(torneo.arbol.search(cedula)){
+                if(torneo.arbol.search(cedula) != null){
                     JOptionPane.showMessageDialog(null," Error: Ya se encuentra inscrita un jugador con ese id", "Cedula invalida",JOptionPane.ERROR_MESSAGE);
                     txtCedula.setText("");
                     txtNombre.setText("");
