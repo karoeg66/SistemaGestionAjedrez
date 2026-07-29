@@ -188,6 +188,13 @@ public class InterfazCompleta {
                 }
             }
         });
+        btnRankingCompleto.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String ranking = torneo.arbol.mostrarRanking(torneo.arbol.raiz);
+                JOptionPane.showMessageDialog(null, ranking, "Ranking de Jugadores", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
     }
 
     public void setInterfazPrincipal(InterfazPrincipal interfazPrincipal) {
