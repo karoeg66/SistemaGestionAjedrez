@@ -85,6 +85,13 @@ public class InterfazInicial {
                 }
             }
         });
+        btnRankingJugadores.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String ranking = torneo.arbol.mostrarRanking();
+                JOptionPane.showMessageDialog(null, ranking, "Ranking de Jugadores", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
         }
 
     public boolean comprobarCampo(String campo) {
