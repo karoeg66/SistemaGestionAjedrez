@@ -61,13 +61,14 @@ public class Inscripcion {
                 limpiarCampos();
                 interfazPrincipal.interfaz1.actualizarBotones();
 
-                if (torneo.cola.hayDos() || torneo.arbol.raiz != null
-                        || torneo.lista != null && !torneo.lista.isEmpty()) {
-                    interfazPrincipal.mostrarInterfazCompleta();
-                    return;
-                }
+                int cantidadEnCola = torneo.cola.getTamanio();
+                boolean tienePartidas = (torneo.lista != null && !torneo.lista.isEmpty());
 
-                interfazPrincipal.mostrarMenuInicial();
+                if (cantidadEnCola >= 2 || tienePartidas) {
+                    interfazPrincipal.mostrarInterfazCompleta();
+                } else {
+                    interfazPrincipal.mostrarMenuInicial();
+                }
             }
         });
     }
