@@ -47,10 +47,16 @@ public class PantallaPartida {
                 puntajeJugador1 = Integer.parseInt(textoPuntos1);
                 puntajeJugador2 = Integer.parseInt(textoPuntos2);
 
+                if (!comprobarCampo(cboxResultado.getSelectedItem().toString())){
+                    JOptionPane.showMessageDialog(null,"Seleccione una opcion de ganador");
+                    return;
+                };
                 obtenerResultado(cboxResultado.getSelectedItem().toString());
                 obtenerPuntosJugador1(puntajeJugador1);
                 obtenerPuntosJugador2(puntajeJugador2);
                 gestionPartida.otorgarPuntos();
+                partida.setTerminada(true);
+                interfazPrincipal.mostrarInterfazCompleta();
             }
         });
     }
@@ -68,12 +74,18 @@ public class PantallaPartida {
 
     public void obtenerResultado(String campo) {
         if (comprobarCampo(campo)) {
+            Jugador jugador1 = gestionPartida.partida.getJugador1();
+            Jugador jugador2 = gestionPartida.partida.getJugador2();
+
             if (campo.equals("JUGADOR 1")) {
                 gestionPartida.resultadoJugador1 = Resultado.VICTORIA;
                 gestionPartida.resultadoJugador2 = Resultado.DERROTA;
+                jugador2.setDerrotas(jugador2.getDerrotas() + 1);
+
             } else if (campo.equals("JUGADOR 2")) {
                 gestionPartida.resultadoJugador2 = Resultado.VICTORIA;
                 gestionPartida.resultadoJugador1 = Resultado.DERROTA;
+                jugador2.setDerrotas((jugador1.getDerrotas() + 1));
             } else if (campo.equals("EMPATE")) {
                 gestionPartida.resultadoJugador1 = Resultado.EMPATE;
                 gestionPartida.resultadoJugador2 = Resultado.EMPATE;

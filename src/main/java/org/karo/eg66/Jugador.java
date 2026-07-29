@@ -1,10 +1,12 @@
 package org.karo.eg66;
 
-public class Jugador {
+import java.io.Serializable;
+
+public class Jugador implements Serializable {
     private String nombre;
     private String id;
     private int puntaje;
-    private int jugadasDestacadas;
+    private int derrotas;
 
     public Jugador(String nombre, String id){
         this.nombre = nombre;
@@ -12,7 +14,7 @@ public class Jugador {
             this.id = id;
         }
         this.puntaje = 0;
-        this.jugadasDestacadas = 0;
+        this.derrotas = 0;
     }
 
     public String getNombre() {
@@ -39,11 +41,16 @@ public class Jugador {
         this.puntaje = puntaje;
     }
 
-    public int getJugadasDestacadas() {
-        return jugadasDestacadas;
+    public int getDerrotas() {
+        return derrotas;
     }
 
-    public void setJugadasDestacadas(int jugadasDestacadas) {
-        this.jugadasDestacadas = jugadasDestacadas;
+    public void setDerrotas(int derrotas) {
+        this.derrotas = derrotas;
     }
+
+    public String toString(){
+        return "Nombre: " + this.nombre + "\n" + "Id: " + this.id + "\n" ;
+    }
+
 }

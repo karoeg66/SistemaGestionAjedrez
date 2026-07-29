@@ -1,8 +1,9 @@
 package org.karo.eg66;
 
 import javax.swing.*;
+import java.io.Serializable;
 
-public class ListaDoble {
+public class ListaDoble implements Serializable {
     NodoListaDoble cabeza;
     NodoListaDoble ultimo;
     int tamanio;
@@ -91,6 +92,20 @@ public class ListaDoble {
         }
         return null;
     }
+
+    public int obtenerMaxIdPartida() {
+        int maxId = 0;
+        NodoListaDoble actual = cabeza; // Ajusta 'cabeza' al nombre de tu primer nodo (ej: inicio, primero)
+
+        while (actual != null) {
+            if (actual.partida != null && actual.partida.getId() > maxId) {
+                maxId = actual.partida.getId();
+            }
+            actual = actual.siguiente;
+        }
+        return maxId;
+    }
+
 
     public String mostrarPartidas() {
         if (isEmpty()) {

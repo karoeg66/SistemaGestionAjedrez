@@ -42,7 +42,7 @@ public class InterfazCompleta {
                     return;
                 }
                 try {
-                    String idPartida = JOptionPane.showInputDialog(null, "Ingrese resultado", "Resultado", JOptionPane.QUESTION_MESSAGE);
+                    String idPartida = JOptionPane.showInputDialog(null, "Ingrese ID de partida", "Resultado", JOptionPane.QUESTION_MESSAGE);
                     if (!comprobarCampo(idPartida)) {
                         JOptionPane.showMessageDialog(null, "Resultado no valido", "Resultado", JOptionPane.WARNING_MESSAGE);
                         return;
@@ -50,6 +50,11 @@ public class InterfazCompleta {
                     if (!torneo.lista.buscarPartida(Integer.parseInt(idPartida))) {
                         JOptionPane.showMessageDialog(null, "Partida no encontrada", "Resultado", JOptionPane.WARNING_MESSAGE);
                         return;
+                    }
+                    if (torneo.lista.obtenerPartida(Integer.parseInt(idPartida)).isTerminada()) {
+                        JOptionPane.showMessageDialog(null, "La partida ya tiene un resultado registrado", "Resultado", JOptionPane.WARNING_MESSAGE);
+                        return;
+
                     }
                     Partida partida = torneo.lista.obtenerPartida(Integer.parseInt(idPartida));
                     PantallaPartida pantallaPartida = new PantallaPartida(partida, torneo, interfazPrincipal);
@@ -63,12 +68,20 @@ public class InterfazCompleta {
         btnFormarPartida.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (!torneo.cola.hayDos()){
+                    JOptionPane.showMessageDialog(null,"No hay suficientes jugadores", "Error", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
                 try {
                 Partida partida = new Partida(torneo.cola.dequeue(),torneo.cola.dequeue());
                     torneo.lista.añadirAlFinal(partida);
-                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null,
+                            "Partida # " + partida.getId() + " creada con éxito:\n" +
+                                    partida.getJugador1().getNombre() + " vs " + partida.getJugador2().getNombre(),
+                            "Partida Formada", JOptionPane.INFORMATION_MESSAGE);                } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Resultado", JOptionPane.WARNING_MESSAGE);
                 }
+
             }
         });
         btnHistorialDePartidas.addActionListener(new ActionListener() {
@@ -80,6 +93,99 @@ public class InterfazCompleta {
                 }
                 JOptionPane.showMessageDialog(null, torneo.lista.mostrarPartidas());
 
+            }
+        });
+        btnListaDeEspera.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null,torneo.cola.mostrarCola());
+            }
+        });
+        btnRetirarJugador.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if (torneo.cola.isEmpty() && torneo.arbol.raiz == null) {
+                    JOptionPane.showMessageDialog(null, "No hay jugadores registrados en el torneo.", "Atención", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                try {
+                    String idJugador = JOptionPane.showInputDialog(null, "Ingrese ID/Cédula del jugador a retirar:", "ID", JOptionPane.QUESTION_MESSAGE);
+
+                    if (!comprobarCampo(idJugador)) {
+                        JOptionPane.showMessageDialog(null, "ID inválido.", "ID", JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+
+                    idJugador = idJugador.trim();
+
+
+                    boolean existeEnArbol = torneo.arbol.existe(idJugador);
+                    boolean existeEnCola = torneo.cola.buscar(Integer.parseInt(idJugador));
+
+                    if (!existeEnArbol && !existeEnCola) {
+                        JOptionPane.showMessageDialog(null, "Jugador no encontrado en el sistema.", "ERROR", JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+
+
+                    Jugador deCola = null;
+                    if (existeEnCola) {
+                        deCola = torneo.cola.eliminarJugador(Integer.parseInt(idJugador));
+                    }
+
+
+                    Jugador deArbol = null;
+                    if (existeEnArbol) {
+                        deArbol = torneo.arbol.delete(idJugador);
+                    }
+
+
+                    Jugador eliminado = (deArbol != null) ? deArbol : deCola;
+
+                    GestorArchivos.guardar(torneo, "torneo_completo.dat");
+
+
+                    if (eliminado != null) {
+                        JOptionPane.showMessageDialog(null,
+                                "Jugador retirado con éxito del torneo:\n\n" +
+                                        "Nombre: " + eliminado.getNombre() + "\n" +
+                                        "ID: " + eliminado.getId(),
+                                "Retiro Completado",
+                                JOptionPane.INFORMATION_MESSAGE);
+                        if (!torneo.cola.hayDos() && torneo.arbol.raiz == null
+                                && torneo.lista == null && torneo.lista.isEmpty()) {
+                            interfazPrincipal.mostrarMenuInicial();
+                        }
+                    }
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Error al retirar: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        btnAnularPartida.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (torneo.lista.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "No hay partidas creadas, Forme una partida");
+                    return;
+                }
+                try {
+                    String idPartida = JOptionPane.showInputDialog(null, "Ingrese ID de partida", "Resultado", JOptionPane.QUESTION_MESSAGE);
+                    if (!comprobarCampo(idPartida)) {
+                        JOptionPane.showMessageDialog(null, "Resultado no valido", "Resultado", JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+                    if (!torneo.lista.buscarPartida(Integer.parseInt(idPartida))) {
+                        JOptionPane.showMessageDialog(null, "Partida no encontrada", "Resultado", JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+                    JOptionPane.showMessageDialog(null, "Partida anulada: " + torneo.lista.eliminarPartida(Integer.parseInt(idPartida)).toString());
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null,ex.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
+                }
             }
         });
     }
