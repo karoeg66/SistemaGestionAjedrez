@@ -116,7 +116,7 @@ public class BST implements Serializable {
     public String mostrarRanking(NodoBST nodo){
         if(nodo == null) return null;
         mostrarRanking(nodo.derecha);
-        ranking += nodo.jugador.getNombre() + " - " +
+        ranking += nodo.jugador.getNombre() + " | " +
                 nodo.jugador.getPuntaje() + "\n";
         mostrarRanking(nodo.izquierda);
         return ranking;
@@ -138,7 +138,7 @@ public class BST implements Serializable {
         while(!cola.isEmpty()){
             NodoBST actual = cola.dequeue();
             resultado += actual.jugador.getNombre() +
-                    " - " + actual.jugador.getPuntaje() + "\n";
+                    " | " + actual.jugador.getPuntaje() + "\n";
 
             if(actual.izquierda != null){
                 cola.enqueue(actual.izquierda);
