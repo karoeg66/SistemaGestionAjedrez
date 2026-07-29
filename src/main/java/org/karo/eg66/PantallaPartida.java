@@ -55,6 +55,15 @@ public class PantallaPartida {
                 obtenerPuntosJugador1(puntajeJugador1);
                 obtenerPuntosJugador2(puntajeJugador2);
                 gestionPartida.otorgarPuntos();
+                Jugador j1 = partida.getJugador1();
+                Jugador j2 = partida.getJugador2();
+
+                torneo.arbol.delete(j1.getId());
+                torneo.arbol.raiz = torneo.arbol.insert(torneo.arbol.raiz, j1);
+
+                torneo.arbol.delete(j2.getId());
+                torneo.arbol.raiz = torneo.arbol.insert(torneo.arbol.raiz, j2);
+
                 partida.setTerminada(true);
                 interfazPrincipal.mostrarInterfazCompleta();
             }
@@ -85,7 +94,7 @@ public class PantallaPartida {
             } else if (campo.equals("JUGADOR 2")) {
                 gestionPartida.resultadoJugador2 = Resultado.VICTORIA;
                 gestionPartida.resultadoJugador1 = Resultado.DERROTA;
-                jugador2.setDerrotas((jugador1.getDerrotas() + 1));
+                jugador1.setDerrotas((jugador1.getDerrotas() + 1));
             } else if (campo.equals("EMPATE")) {
                 gestionPartida.resultadoJugador1 = Resultado.EMPATE;
                 gestionPartida.resultadoJugador2 = Resultado.EMPATE;

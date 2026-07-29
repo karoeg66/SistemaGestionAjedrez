@@ -12,6 +12,8 @@ public class Jugador implements Serializable {
         this.nombre = nombre;
         if(id.length() >= 8){
             this.id = id;
+        }else{
+            throw new RuntimeException("El id debe tener al menos 8 caracteres");
         }
         this.puntaje = 0;
         this.derrotas = 0;
