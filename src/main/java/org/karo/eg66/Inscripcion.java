@@ -36,8 +36,8 @@ public class Inscripcion {
                     return;
                 }
 
-                if (cedula.length() < 8) {
-                    JOptionPane.showMessageDialog(null, "Error: La cédula debe tener al menos 8 dígitos.", "Cédula inválida", JOptionPane.ERROR_MESSAGE);
+                if (cedula.length() < 8 || cedula.length() > 10) {
+                    JOptionPane.showMessageDialog(null, "Error: La cédula debe tener al menos 8 dígitos y menos de 10 digitos.", "Cédula inválida", JOptionPane.ERROR_MESSAGE);
                     txtCedula.setText("");
                     return;
                 }

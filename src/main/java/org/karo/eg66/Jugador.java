@@ -50,7 +50,7 @@ public class Jugador implements Serializable {
     }
 
     public String toString(){
-        return "Nombre: " + this.nombre + "\n" + "Id: " + this.id + "\n" ;
+        return "\nNombre: " + this.nombre + "\n" + "Id: " + this.id + "\n" ;
     }
 
     public void mostrarInfo(){

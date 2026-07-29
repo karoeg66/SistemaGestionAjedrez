@@ -24,7 +24,7 @@ public class Partida implements Serializable {
     }
 
     public String toString() {
-        return "ID: " + id + "\n Fecha: " + fecha.format(getFormateador()) + "\n Jugador1: " + jugador1.toString() + "\nJugador2: " + jugador2.toString() + "\nResultado :"+ resultado + "\n --------------------------------------" + "\n" ;
+        return "ID: " + id + "\nFecha: " + fecha.format(getFormateador()) + "\n"  +"Jugador 1: " + jugador1.toString() + "\n" +"Jugador 2: " + jugador2.toString() + "\nResultado :"+ "\n " + resultado + "\n --------------------------------------" + "\n" ;
     }
 
     private DateTimeFormatter getFormateador() {

@@ -14,18 +14,18 @@ public class GestionPartida {
             partida.getJugador1().setPuntaje(partida.getJugador1().getPuntaje() + 20);
             partida.getJugador2().setPuntaje(partida.getJugador2().getPuntaje() - 10);
             partida.getJugador2().setDerrotas(partida.getJugador2().getDerrotas() + 1);
-            resultadoPartida = ("GANO: " + partida.getJugador1().getNombre() + "\n PERDIO: " + partida.getJugador2().getNombre() );
+            resultadoPartida = ("\n" + "GANO: " + partida.getJugador1().getNombre() + "\n PERDIO: " + partida.getJugador2().getNombre() + "\n" );
             partida.setResultado(resultadoPartida);
         }
         else if (resultadoJugador2 == Resultado.VICTORIA) {
             partida.getJugador2().setPuntaje(partida.getJugador2().getPuntaje() + 20);
             partida.getJugador1().setPuntaje(partida.getJugador1().getPuntaje() - 10);
             partida.getJugador1().setDerrotas(partida.getJugador1().getDerrotas() + 1);
-            resultadoPartida = ("GANO: " + partida.getJugador2().getNombre() + "\n PERDIO: " + partida.getJugador1().getNombre() );
+            resultadoPartida = ("\n" + "GANO: " + partida.getJugador2().getNombre() + "\n" + "PERDIO: " + partida.getJugador1().getNombre() + "\n");
             partida.setResultado(resultadoPartida);
         }
         else {
-            partida.setResultado("EMPATE");
+            partida.setResultado("\nEMPATE");
         }
 
     }
