@@ -157,8 +157,11 @@ public class BST implements Serializable {
         String resultado = "";
         ColaLevelOrder cola = new ColaLevelOrder();
         cola.enqueue(raiz);
+        int contador = 0;
         while(!cola.isEmpty()){
             NodoBST actual = cola.dequeue();
+            contador ++;
+            resultado += "Nivel: " + contador + "\n";
             resultado += actual.jugador.getNombre() +
                     " | " + actual.jugador.getPuntaje() + "\n";
 
