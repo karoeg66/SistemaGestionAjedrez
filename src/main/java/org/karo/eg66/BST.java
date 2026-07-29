@@ -105,6 +105,7 @@ public class BST implements Serializable {
         return nodo;
     }
     public void preOrder(NodoBST nodo){
+        if(nodo == null) return;
         nodo.jugador.mostrarInfo();
         preOrder(nodo.izquierda);
         preOrder(nodo.derecha);
@@ -125,6 +126,7 @@ public class BST implements Serializable {
     }
 
     public void postOrder(NodoBST nodo){
+        if(nodo == null) return;
         postOrder(nodo.izquierda);
         postOrder(nodo.derecha);
         nodo.jugador.mostrarInfo();
