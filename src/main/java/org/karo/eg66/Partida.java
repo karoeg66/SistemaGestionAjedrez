@@ -12,7 +12,7 @@ public class Partida implements Serializable {
     private Jugador jugador2;
     private String resultado;
     private boolean isTerminada;
-    DateTimeFormatter formateador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    transient DateTimeFormatter formateador;
 
     public Partida(Jugador jugador1, Jugador jugador2) {
         this.id = contador++;
@@ -24,7 +24,14 @@ public class Partida implements Serializable {
     }
 
     public String toString() {
-        return "ID: " + id + "\n Fecha: " + fecha.format(formateador) + "\n Jugador1: " + jugador1.toString() + "\nJugador2: " + jugador2.toString() + "\nResultado :"+ resultado + "\n --------------------------------------" + "\n" ;
+        return "ID: " + id + "\n Fecha: " + fecha.format(getFormateador()) + "\n Jugador1: " + jugador1.toString() + "\nJugador2: " + jugador2.toString() + "\nResultado :"+ resultado + "\n --------------------------------------" + "\n" ;
+    }
+
+    private DateTimeFormatter getFormateador() {
+        if (formateador == null) {
+            formateador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        }
+        return formateador;
     }
 
     public int getId() {

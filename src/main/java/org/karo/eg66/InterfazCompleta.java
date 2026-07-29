@@ -154,6 +154,10 @@ public class InterfazCompleta {
                                         "ID: " + eliminado.getId(),
                                 "Retiro Completado",
                                 JOptionPane.INFORMATION_MESSAGE);
+                        if (!torneo.cola.hayDos() && torneo.arbol.raiz == null
+                                && torneo.lista == null && torneo.lista.isEmpty()) {
+                            interfazPrincipal.mostrarMenuInicial();
+                        }
                     }
 
                 } catch (Exception ex) {

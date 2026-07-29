@@ -21,9 +21,11 @@ public class InicioSesion {
                 if (!validarContraseña(password)) {
                     JOptionPane.showMessageDialog(null,"Contraseña invalida","ERROR",JOptionPane.ERROR_MESSAGE);
                     passwordField.setText("");
+                    return;
                 }
-                else {
-                    if (interfazPrincipal.inscripcion.torneo.cola.huboDos() || interfazPrincipal.inscripcion.torneo.cola.hayDos()) {
+                TorneoEstructuras torneo = interfazPrincipal.inscripcion.torneo;
+                    if (interfazPrincipal.inscripcion.torneo.cola.huboDos() || interfazPrincipal.inscripcion.torneo.cola.hayDos() || torneo.arbol.raiz != null
+                            || !torneo.lista.isEmpty()) {
                         interfazPrincipal.mostrarInterfazCompleta();
                         passwordField.setText("");
                         return;
@@ -31,7 +33,6 @@ public class InicioSesion {
                     interfazPrincipal.mostrarMenuInicial();
                     passwordField.setText("");
                 }
-            }
         });
     }
 

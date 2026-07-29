@@ -42,14 +42,13 @@ public class Inscripcion {
                     return;
                 }
 
-                // Verificar si ya existe en el árbol BST
+
                 if (torneo.arbol.search(cedula) != null) {
                     JOptionPane.showMessageDialog(null, "Error: Ya se encuentra inscrito un jugador con esa cédula.", "Cédula duplicada", JOptionPane.ERROR_MESSAGE);
                     limpiarCampos();
                     return;
                 }
 
-                // 🟢 Se crea UN SOLO objeto Jugador y se asigna a las dos estructuras
                 Jugador nuevoJugador = new Jugador(nombre, cedula);
 
                 torneo.cola.enqueue(nuevoJugador);
@@ -60,13 +59,16 @@ public class Inscripcion {
 
                 JOptionPane.showMessageDialog(null, "Jugador " + nombre + " inscrito con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 limpiarCampos();
+                interfazPrincipal.interfaz1.actualizarBotones();
 
-                if (torneo.cola.hayDos()) {
+                int cantidadEnCola = torneo.cola.getTamanio();
+                boolean tienePartidas = (torneo.lista != null && !torneo.lista.isEmpty());
+
+                if (cantidadEnCola >= 2 || tienePartidas) {
                     interfazPrincipal.mostrarInterfazCompleta();
-                    return;
+                } else {
+                    interfazPrincipal.mostrarMenuInicial();
                 }
-
-                interfazPrincipal.mostrarMenuInicial();
             }
         });
     }
