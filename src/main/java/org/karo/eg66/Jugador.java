@@ -53,4 +53,8 @@ public class Jugador implements Serializable {
         return "Nombre: " + this.nombre + "\n" + "Id: " + this.id + "\n" ;
     }
 
+    public void mostrarInfo(){
+        System.out.println(nombre + "-" + puntaje);
+    }
+
 }
