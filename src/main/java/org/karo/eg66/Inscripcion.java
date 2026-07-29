@@ -11,7 +11,6 @@ public class Inscripcion {
     private JLabel lblCedula;
     private JButton btnRegistrar;
     private JPanel panelInscripcion;
-    Jugador jugador;
     TorneoEstructuras torneo;
     InterfazPrincipal interfazPrincipal;
 
@@ -27,50 +26,54 @@ public class Inscripcion {
 
                 if (!comprobarCampo(nombre) || !comprobarCampo(cedula)) {
                     JOptionPane.showMessageDialog(null, "Error: Todos los campos son obligatorios.", "Campos vacíos", JOptionPane.WARNING_MESSAGE);
-                    txtNombre.setText("");
-                    txtCedula.setText("");
+                    limpiarCampos();
                     return;
                 }
 
-
                 if (!comprobarCedulaNumerica(cedula)) {
-                    JOptionPane.showMessageDialog(null, "Error: La cedula debe contener unicamente numeros.", "Error de formato", JOptionPane.ERROR_MESSAGE);
-                    txtNombre.setText("");
-                    txtCedula.setText("");
+                    JOptionPane.showMessageDialog(null, "Error: La cédula debe contener únicamente números.", "Error de formato", JOptionPane.ERROR_MESSAGE);
+                    limpiarCampos();
                     return;
                 }
 
                 if (cedula.length() < 8) {
-                    JOptionPane.showMessageDialog(null," Error: la cedula debe ser mayor a 8 digitos", "Cedula invalida",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Error: La cédula debe tener al menos 8 dígitos.", "Cédula inválida", JOptionPane.ERROR_MESSAGE);
                     txtCedula.setText("");
                     return;
                 }
 
-                if(torneo.arbol.search(cedula) != null){
-                    JOptionPane.showMessageDialog(null," Error: Ya se encuentra inscrita un jugador con ese id", "Cedula invalida",JOptionPane.ERROR_MESSAGE);
-                    txtCedula.setText("");
-                    txtNombre.setText("");
+                // Verificar si ya existe en el árbol BST
+                if (torneo.arbol.search(cedula) != null) {
+                    JOptionPane.showMessageDialog(null, "Error: Ya se encuentra inscrito un jugador con esa cédula.", "Cédula duplicada", JOptionPane.ERROR_MESSAGE);
+                    limpiarCampos();
                     return;
                 }
 
+                // 🟢 Se crea UN SOLO objeto Jugador y se asigna a las dos estructuras
+                Jugador nuevoJugador = new Jugador(nombre, cedula);
 
-                jugador = new Jugador(nombre, cedula);
-                torneo.cola.enqueue(jugador);
-                torneo.arbol.raiz = torneo.arbol.insert(torneo.arbol.raiz, jugador);
+                torneo.cola.enqueue(nuevoJugador);
+                torneo.arbol.raiz = torneo.arbol.insert(torneo.arbol.raiz, nuevoJugador);
 
-                JOptionPane.showMessageDialog(null, "Jugador inscrito con exito en la cola");
-                txtNombre.setText("");
-                txtCedula.setText("");
-                if (torneo.cola.huboDos() || torneo.cola.hayDos()){
+
+                GestorArchivos.guardar(torneo, "torneo_completo.dat");
+
+                JOptionPane.showMessageDialog(null, "Jugador " + nombre + " inscrito con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                limpiarCampos();
+
+                if (torneo.cola.hayDos()) {
                     interfazPrincipal.mostrarInterfazCompleta();
                     return;
                 }
 
                 interfazPrincipal.mostrarMenuInicial();
-
-
             }
         });
+    }
+
+    private void limpiarCampos() {
+        txtNombre.setText("");
+        txtCedula.setText("");
     }
 
     public boolean comprobarCampo(String campo) {
@@ -84,6 +87,7 @@ public class Inscripcion {
     public JPanel getPanelInscripcion() {
         return panelInscripcion;
     }
+
     public void setInterfazPrincipal(InterfazPrincipal interfazPrincipal) {
         this.interfazPrincipal = interfazPrincipal;
     }

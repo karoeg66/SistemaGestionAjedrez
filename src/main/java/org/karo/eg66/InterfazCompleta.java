@@ -106,15 +106,20 @@ public class InterfazCompleta {
             public void actionPerformed(ActionEvent e) {
 
                 if (torneo.cola.isEmpty() && torneo.arbol.raiz == null) {
-                    JOptionPane.showMessageDialog(null, "La lista de espera está vacía.", "Atención", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "No hay jugadores registrados en el torneo.", "Atención", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
+
                 try {
-                    String idJugador = JOptionPane.showInputDialog(null, "Ingrese ID de jugador", "ID", JOptionPane.QUESTION_MESSAGE);
+                    String idJugador = JOptionPane.showInputDialog(null, "Ingrese ID/Cédula del jugador a retirar:", "ID", JOptionPane.QUESTION_MESSAGE);
+
                     if (!comprobarCampo(idJugador)) {
-                        JOptionPane.showMessageDialog(null, "ID invalido", "ID", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "ID inválido.", "ID", JOptionPane.WARNING_MESSAGE);
                         return;
                     }
+
+                    idJugador = idJugador.trim();
+
 
                     boolean existeEnArbol = torneo.arbol.existe(idJugador);
                     boolean existeEnCola = torneo.cola.buscar(Integer.parseInt(idJugador));
@@ -125,20 +130,34 @@ public class InterfazCompleta {
                     }
 
 
+                    Jugador deCola = null;
                     if (existeEnCola) {
-                        torneo.cola.eliminarJugador(Integer.parseInt(idJugador));
+                        deCola = torneo.cola.eliminarJugador(Integer.parseInt(idJugador));
                     }
 
-                    Jugador eliminado = null;
+
+                    Jugador deArbol = null;
                     if (existeEnArbol) {
-                        eliminado = torneo.arbol.delete(idJugador);
-                    }
-                    if (eliminado != null) {
-                        JOptionPane.showMessageDialog(null, "Jugador eliminado:" + eliminado.toString());
+                        deArbol = torneo.arbol.delete(idJugador);
                     }
 
-                } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
+
+                    Jugador eliminado = (deArbol != null) ? deArbol : deCola;
+
+                    GestorArchivos.guardar(torneo, "torneo_completo.dat");
+
+
+                    if (eliminado != null) {
+                        JOptionPane.showMessageDialog(null,
+                                "Jugador retirado con éxito del torneo:\n\n" +
+                                        "Nombre: " + eliminado.getNombre() + "\n" +
+                                        "ID: " + eliminado.getId(),
+                                "Retiro Completado",
+                                JOptionPane.INFORMATION_MESSAGE);
+                    }
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Error al retirar: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
