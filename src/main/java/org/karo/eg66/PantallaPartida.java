@@ -20,7 +20,6 @@ public class PantallaPartida {
     GestionPartida gestionPartida;
     int puntajeJugador1;
     int puntajeJugador2;
-    TorneoEstructuras torneo;
     InterfazPrincipal interfazPrincipal;
 
     public PantallaPartida(Partida partida, TorneoEstructuras torneo, InterfazPrincipal interfazPrincipal) {
@@ -44,8 +43,15 @@ public class PantallaPartida {
                     return;
                 }
 
-                puntajeJugador1 = Integer.parseInt(textoPuntos1);
-                puntajeJugador2 = Integer.parseInt(textoPuntos2);
+                try{
+                    puntajeJugador1 = Integer.parseInt(textoPuntos1);
+                    puntajeJugador2 = Integer.parseInt(textoPuntos2);
+                }catch(NumberFormatException exception) {
+                    JOptionPane.showMessageDialog(null,"El valor ingresado es demasiado grande","ERROR",JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+
 
                 if (!comprobarCampo(cboxResultado.getSelectedItem().toString())){
                     JOptionPane.showMessageDialog(null,"Seleccione una opcion de ganador");
@@ -63,6 +69,9 @@ public class PantallaPartida {
 
                 torneo.arbol.delete(j2.getId());
                 torneo.arbol.raiz = torneo.arbol.insert(torneo.arbol.raiz, j2);
+
+                torneo.cola.enqueue(j1);
+                torneo.cola.enqueue(j2);
 
                 partida.setTerminada(true);
                 interfazPrincipal.mostrarInterfazCompleta();

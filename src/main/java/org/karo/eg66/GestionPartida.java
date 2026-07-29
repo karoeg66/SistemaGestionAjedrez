@@ -28,5 +28,7 @@ public class GestionPartida {
             partida.setResultado("\nEMPATE");
         }
 
+
+
     }
 }

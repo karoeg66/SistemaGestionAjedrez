@@ -118,10 +118,16 @@ public class BST implements Serializable {
     }
     private String mostrarRanking(NodoBST nodo){
         if(nodo == null) return "";
-        mostrarRanking(nodo.izquierda);
-        ranking += nodo.jugador.getNombre() + " | " +
-                nodo.jugador.getPuntaje() + "\n";
+
         mostrarRanking(nodo.derecha);
+
+        ranking += nodo.jugador.getNombre()
+                + " | "
+                + nodo.jugador.getPuntaje()
+                + "\n";
+
+        mostrarRanking(nodo.izquierda);
+
         return ranking;
     }
 

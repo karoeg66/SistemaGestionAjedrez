@@ -36,8 +36,18 @@ public class Inscripcion {
                     return;
                 }
 
+                if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) {
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "El nombre solo puede contener letras.",
+                            "Nombre inválido",
+                            JOptionPane.ERROR_MESSAGE
+                    );
+                    return;
+                }
+
                 if (cedula.length() < 8 || cedula.length() > 10) {
-                    JOptionPane.showMessageDialog(null, "Error: La cédula debe tener al menos 8 dígitos y menos de 10 digitos.", "Cédula inválida", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Error: La cédula debe tener entre 8 y 10 dígitos.", "Cédula inválida", JOptionPane.ERROR_MESSAGE);
                     txtCedula.setText("");
                     return;
                 }

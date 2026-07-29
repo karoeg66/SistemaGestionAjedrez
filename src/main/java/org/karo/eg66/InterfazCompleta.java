@@ -192,6 +192,10 @@ public class InterfazCompleta {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String ranking = torneo.arbol.mostrarRanking();
+                if(ranking == null){
+                    JOptionPane.showMessageDialog(null, "No hay jugadores registrados en el ranking", "Ranking", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
                 JOptionPane.showMessageDialog(null, ranking, "Ranking de Jugadores", JOptionPane.INFORMATION_MESSAGE);
             }
         });
