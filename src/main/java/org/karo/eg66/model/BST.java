@@ -57,12 +57,26 @@ public class BST implements Serializable {
         return searchRec(nodo.derecha, id);
     }
 
-    public boolean existe(String id) {
-        return search(id) != null;
+    public Jugador searchNombre(String nombre) {
+        return searchRecNombre(this.raiz, nombre);
     }
 
-    public boolean existeNombre(String nombre) {
-        return search(nombre) != null;
+    private Jugador searchRecNombre(NodoBST nodo, String nombre) {
+        if (nodo == null) {
+            return null;
+        }
+        if (nodo.jugador.getNombre().trim().equalsIgnoreCase(nombre.trim())) {
+            return nodo.jugador;
+        }
+        Jugador enIzquierda = searchRec(nodo.izquierda, nombre);
+        if(enIzquierda != null){
+            return enIzquierda;
+        }
+        return searchRec(nodo.derecha, nombre);
+    }
+
+    public boolean existe(String id) {
+        return search(id) != null;
     }
 
 

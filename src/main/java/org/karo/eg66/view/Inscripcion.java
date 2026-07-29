@@ -62,7 +62,7 @@ public class Inscripcion {
                     limpiarCampos();
                     return;
                 }
-                if (torneo.arbol.existeNombre(nombre)) {
+                if (torneo.arbol.searchNombre(nombre) != null) {
                     JOptionPane.showMessageDialog(null, "Error: Ya se encuentra inscrito un jugador con ese nombre.", "Nombre duplicada", JOptionPane.ERROR_MESSAGE);
                     limpiarCampos();
                     return;
