@@ -106,5 +106,49 @@ public class BST implements Serializable {
         }
         return nodo;
     }
+    public void preOrder(NodoBST nodo){
+        nodo.jugador.mostrarInfo();
+        preOrder(nodo.izquierda);
+        preOrder(nodo.derecha);
+    }
+
+    private String ranking = "";
+    public String mostrarRanking(NodoBST nodo){
+        if(nodo == null) return null;
+        mostrarRanking(nodo.derecha);
+        ranking += nodo.jugador.getNombre() + " - " +
+                nodo.jugador.getPuntaje() + "\n";
+        mostrarRanking(nodo.izquierda);
+        return ranking;
+    }
+
+    public void postOrder(NodoBST nodo){
+        postOrder(nodo.izquierda);
+        postOrder(nodo.derecha);
+        nodo.jugador.mostrarInfo();
+    }
+
+    public String levelOrder(){
+        if(raiz == null){
+            return "El arbol esta vacio";
+        }
+        String resultado = "";
+        ColaLevelOrder cola = new ColaLevelOrder();
+        cola.enqueue(raiz);
+        while(!cola.isEmpty()){
+            NodoBST actual = cola.dequeue();
+            resultado += actual.jugador.getNombre() +
+                    " - " + actual.jugador.getPuntaje() + "\n";
+
+            if(actual.izquierda != null){
+                cola.enqueue(actual.izquierda);
+            }
+            if(actual.derecha != null){
+                cola.enqueue(actual.derecha);
+            }
+        }
+        return resultado;
+    }
+
 
 }
