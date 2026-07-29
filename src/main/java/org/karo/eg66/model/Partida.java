@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Partida implements Serializable {
-    static int contador = 1;
+    public static int contador = 1;
     private int id;
     private LocalDate fecha;
     private Jugador jugador1;
