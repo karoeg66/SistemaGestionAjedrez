@@ -105,7 +105,7 @@ public class InterfazCompleta {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (torneo.cola.isEmpty()) {
+                if (torneo.cola.isEmpty() && torneo.arbol.raiz == null) {
                     JOptionPane.showMessageDialog(null, "La lista de espera está vacía.", "Atención", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
@@ -115,15 +115,30 @@ public class InterfazCompleta {
                         JOptionPane.showMessageDialog(null, "ID invalido", "ID", JOptionPane.WARNING_MESSAGE);
                         return;
                     }
-                    if(torneo.arbol.search(idJugador)==null && !torneo.cola.buscar(Integer.parseInt(idJugador))){
-                        JOptionPane.showMessageDialog(null, "Jugador no encontrado", "ERROR", JOptionPane.WARNING_MESSAGE);
+
+                    boolean existeEnArbol = torneo.arbol.existe(idJugador);
+                    boolean existeEnCola = torneo.cola.buscar(Integer.parseInt(idJugador));
+
+                    if (!existeEnArbol && !existeEnCola) {
+                        JOptionPane.showMessageDialog(null, "Jugador no encontrado en el sistema.", "ERROR", JOptionPane.WARNING_MESSAGE);
                         return;
                     }
-                    torneo.cola.eliminarJugador(Integer.parseInt(idJugador));
-                    JOptionPane.showMessageDialog(null, "Jugador eliminado:" + torneo.arbol.delete(idJugador));
+
+
+                    if (existeEnCola) {
+                        torneo.cola.eliminarJugador(Integer.parseInt(idJugador));
+                    }
+
+                    Jugador eliminado = null;
+                    if (existeEnArbol) {
+                        eliminado = torneo.arbol.delete(idJugador);
+                    }
+                    if (eliminado != null) {
+                        JOptionPane.showMessageDialog(null, "Jugador eliminado:" + eliminado.toString());
+                    }
 
                 } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null,ex.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
