@@ -107,21 +107,21 @@ public class BST implements Serializable {
         return nodo;
     }
     public void preOrder(NodoBST nodo){
-        System.out.println(nodo.jugador.toString());
+        nodo.jugador.mostrarInfo();
         preOrder(nodo.izquierda);
         preOrder(nodo.derecha);
     }
 
     public void inOrder(NodoBST nodo){
         inOrder(nodo.izquierda);
-        System.out.println(nodo.jugador.toString());
+        nodo.jugador.mostrarInfo();
         inOrder(nodo.derecha);
     }
 
     public void postOrder(NodoBST nodo){
         postOrder(nodo.izquierda);
         postOrder(nodo.derecha);
-        System.out.println(nodo.jugador.toString());
+        nodo.jugador.mostrarInfo();
     }
 
 
