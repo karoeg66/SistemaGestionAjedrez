@@ -112,10 +112,14 @@ public class BST implements Serializable {
         preOrder(nodo.derecha);
     }
 
-    public void inOrder(NodoBST nodo){
-        inOrder(nodo.izquierda);
-        nodo.jugador.mostrarInfo();
-        inOrder(nodo.derecha);
+    private String ranking = "";
+    public String mostrarRanking(NodoBST nodo){
+        if(nodo == null) return null;
+        mostrarRanking(nodo.derecha);
+        ranking += nodo.jugador.getNombre() + " - " +
+                nodo.jugador.getPuntaje() + "\n";
+        mostrarRanking(nodo.izquierda);
+        return ranking;
     }
 
     public void postOrder(NodoBST nodo){
