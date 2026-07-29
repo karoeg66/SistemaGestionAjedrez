@@ -57,18 +57,21 @@ public class PantallaPartida {
                     JOptionPane.showMessageDialog(null,"Seleccione una opcion de ganador");
                     return;
                 };
-                obtenerResultado(cboxResultado.getSelectedItem().toString());
-                obtenerPuntosJugador1(puntajeJugador1);
-                obtenerPuntosJugador2(puntajeJugador2);
-                gestionPartida.otorgarPuntos();
+
                 Jugador j1 = partida.getJugador1();
                 Jugador j2 = partida.getJugador2();
 
                 torneo.arbol.delete(j1.getId());
-                torneo.arbol.raiz = torneo.arbol.insert(torneo.arbol.raiz, j1);
 
                 torneo.arbol.delete(j2.getId());
+
+                obtenerResultado(cboxResultado.getSelectedItem().toString());
+                obtenerPuntosJugador1(puntajeJugador1);
+                obtenerPuntosJugador2(puntajeJugador2);
+                gestionPartida.otorgarPuntos();
+
                 torneo.arbol.raiz = torneo.arbol.insert(torneo.arbol.raiz, j2);
+                torneo.arbol.raiz = torneo.arbol.insert(torneo.arbol.raiz, j1);
 
                 torneo.cola.enqueue(j1);
                 torneo.cola.enqueue(j2);
@@ -92,18 +95,14 @@ public class PantallaPartida {
 
     public void obtenerResultado(String campo) {
         if (comprobarCampo(campo)) {
-            Jugador jugador1 = gestionPartida.partida.getJugador1();
-            Jugador jugador2 = gestionPartida.partida.getJugador2();
 
             if (campo.equals("JUGADOR 1")) {
                 gestionPartida.resultadoJugador1 = Resultado.VICTORIA;
                 gestionPartida.resultadoJugador2 = Resultado.DERROTA;
-                jugador2.setDerrotas(jugador2.getDerrotas() + 1);
 
             } else if (campo.equals("JUGADOR 2")) {
                 gestionPartida.resultadoJugador2 = Resultado.VICTORIA;
                 gestionPartida.resultadoJugador1 = Resultado.DERROTA;
-                jugador1.setDerrotas((jugador1.getDerrotas() + 1));
             } else if (campo.equals("EMPATE")) {
                 gestionPartida.resultadoJugador1 = Resultado.EMPATE;
                 gestionPartida.resultadoJugador2 = Resultado.EMPATE;
