@@ -115,6 +115,7 @@ public class BST implements Serializable {
     private String ranking = "";
     public String mostrarRanking(NodoBST nodo){
         if(nodo == null) return null;
+        ranking += "";
         mostrarRanking(nodo.derecha);
         ranking += nodo.jugador.getNombre() + " | " +
                 nodo.jugador.getPuntaje() + "\n";
