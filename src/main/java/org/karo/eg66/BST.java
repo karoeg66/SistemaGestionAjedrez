@@ -128,5 +128,27 @@ public class BST implements Serializable {
         nodo.jugador.mostrarInfo();
     }
 
+    public String levelOrder(){
+        if(raiz == null){
+            return "El arbol esta vacio";
+        }
+        String resultado = "";
+        ColaLevelOrder cola = new ColaLevelOrder();
+        cola.enqueue(raiz);
+        while(!cola.isEmpty()){
+            NodoBST actual = cola.dequeue();
+            resultado += actual.jugador.getNombre() +
+                    " - " + actual.jugador.getPuntaje() + "\n";
+
+            if(actual.izquierda != null){
+                cola.enqueue(actual.izquierda);
+            }
+            if(actual.derecha != null){
+                cola.enqueue(actual.derecha);
+            }
+        }
+        return resultado;
+    }
+
 
 }
